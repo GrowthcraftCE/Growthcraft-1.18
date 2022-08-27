@@ -80,7 +80,7 @@ public class GrowthcraftItems {
             Reference.UnlocalizedName.ROPE_LINEN, () -> new RopeItem(GrowthcraftBlocks.ROPE_LINEN.get())
     );
 
-    //public static final RegistryObject<GrowthcraftItem> SALT = ITEMS.register(
-    //        Reference.UnlocalizedName.SALT_ITEM, GrowthcraftItem::new
-    //);
+    public static final RegistryObject<GrowthcraftItem> SALT = ITEMS.register(
+            Reference.UnlocalizedName.SALT_ITEM, GrowthcraftItem::new
+    );
 }
