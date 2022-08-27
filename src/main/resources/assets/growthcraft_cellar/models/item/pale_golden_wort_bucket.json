@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "growthcraft_cellar:item/bucket/wort/pale_golden_wort_bucket"
+  }
+}
