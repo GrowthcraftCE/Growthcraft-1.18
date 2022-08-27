@@ -3,12 +3,15 @@ package growthcraft.core;
 import growthcraft.core.init.GrowthcraftBlockEntities;
 import growthcraft.core.init.GrowthcraftBlocks;
 import growthcraft.core.init.GrowthcraftItems;
+import growthcraft.core.init.config.GrowthcraftConfig;
 import growthcraft.core.shared.Reference;
+import growthcraft.core.world.gen.GrowthcraftOreGeneration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -30,6 +33,8 @@ public class Growthcraft {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
+
+        GrowthcraftConfig.loadConfig();
 
         GrowthcraftBlocks.BLOCKS.register(modEventBus);
         GrowthcraftItems.ITEMS.register(modEventBus);
@@ -58,6 +63,11 @@ public class Growthcraft {
         GrowthcraftBlocks.registerBlockItems(itemRegistry, properties);
     }
 
+    @SubscribeEvent
+    public static void onBiomeLoadingEvent(final BiomeLoadingEvent event) {
+        GrowthcraftOreGeneration.registerConfiguredFeatures();
+    }
 
 
-}
+
+    }
