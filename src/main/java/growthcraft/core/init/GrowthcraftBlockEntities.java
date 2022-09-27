@@ -15,7 +15,16 @@ public class GrowthcraftBlockEntities {
     public static final RegistryObject<BlockEntityType<RopeBlockEntity>> ROPE_BLOCK_ENTITY = BLOCK_ENTITIES.register(
             Reference.UnlocalizedName.ROPE,
             () -> BlockEntityType.Builder.of(RopeBlockEntity::new,
-                    GrowthcraftBlocks.ROPE_LINEN.get()
+                    GrowthcraftBlocks.ROPE_LINEN.get(),
+                    GrowthcraftBlocks.ROPE_LINEN_ACACIA_FENCE.get(),
+                    GrowthcraftBlocks.ROPE_LINEN_BIRCH_FENCE.get(),
+                    GrowthcraftBlocks.ROPE_LINEN_CRIMSON_FENCE.get(),
+                    GrowthcraftBlocks.ROPE_LINEN_DARK_OAK_FENCE.get(),
+                    GrowthcraftBlocks.ROPE_LINEN_JUNGLE_FENCE.get(),
+                    GrowthcraftBlocks.ROPE_LINEN_NETHER_BRICK_FENCE.get(),
+                    GrowthcraftBlocks.ROPE_LINEN_OAK_FENCE.get(),
+                    GrowthcraftBlocks.ROPE_LINEN_SPRUCE_FENCE.get(),
+                    GrowthcraftBlocks.ROPE_LINEN_WARPED_FENCE.get()
             ).build(null)
     );
 

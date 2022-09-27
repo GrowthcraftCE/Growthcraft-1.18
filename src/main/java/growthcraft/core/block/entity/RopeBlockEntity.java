@@ -11,9 +11,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -40,6 +38,10 @@ public class RopeBlockEntity extends BlockEntity {
 
     public void setFenceItemStack(ItemStack stack) {
         this.itemStackHandler.insertItem(0, stack, false);
+    }
+
+    public boolean hasFenceItemStack() {
+        return this.itemStackHandler.getStackInSlot(0).copy().getCount() > 0;
     }
 
     @Nullable

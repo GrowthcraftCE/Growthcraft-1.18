@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "minecraft:block/oak_fence_post"
+        "model": "minecraft:block/birch_fence_post"
       }
     },
     {

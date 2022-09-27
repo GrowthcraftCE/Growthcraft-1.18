@@ -25,8 +25,40 @@ public class GrowthcraftBlocks {
             Reference.UnlocalizedName.ROPE_LINEN, RopeBlock::new
     );
 
+    public static final RegistryObject<RopeBlock> ROPE_LINEN_ACACIA_FENCE = BLOCKS.register(
+            Reference.UnlocalizedName.ROPE_LINEN_ACACIA_FENCE, RopeBlock::new
+    );
+
+    public static final RegistryObject<RopeBlock> ROPE_LINEN_BIRCH_FENCE = BLOCKS.register(
+            Reference.UnlocalizedName.ROPE_LINEN_BIRCH_FENCE, RopeBlock::new
+    );
+
+    public static final RegistryObject<RopeBlock> ROPE_LINEN_CRIMSON_FENCE = BLOCKS.register(
+            Reference.UnlocalizedName.ROPE_LINEN_CRIMSON_FENCE, RopeBlock::new
+    );
+
+    public static final RegistryObject<RopeBlock> ROPE_LINEN_JUNGLE_FENCE = BLOCKS.register(
+            Reference.UnlocalizedName.ROPE_LINEN_JUNGLE_FENCE, RopeBlock::new
+    );
+
+    public static final RegistryObject<RopeBlock> ROPE_LINEN_DARK_OAK_FENCE = BLOCKS.register(
+            Reference.UnlocalizedName.ROPE_LINEN_DARK_OAK_FENCE, RopeBlock::new
+    );
+
+    public static final RegistryObject<RopeBlock> ROPE_LINEN_WARPED_FENCE = BLOCKS.register(
+            Reference.UnlocalizedName.ROPE_LINEN_WARPED_FENCE, RopeBlock::new
+    );
+
     public static final RegistryObject<RopeBlock> ROPE_LINEN_OAK_FENCE = BLOCKS.register(
         Reference.UnlocalizedName.ROPE_LINEN_OAK_FENCE, RopeBlock::new
+    );
+
+    public static final RegistryObject<RopeBlock> ROPE_LINEN_SPRUCE_FENCE = BLOCKS.register(
+            Reference.UnlocalizedName.ROPE_LINEN_SPRUCE_FENCE, RopeBlock::new
+    );
+
+    public static final RegistryObject<RopeBlock> ROPE_LINEN_NETHER_BRICK_FENCE = BLOCKS.register(
+            Reference.UnlocalizedName.ROPE_LINEN_NETHER_BRICK_FENCE, RopeBlock::new
     );
 
     public static final RegistryObject<Block> SALT_BLOCK = BLOCKS.register(
@@ -50,7 +82,16 @@ public class GrowthcraftBlocks {
     private static boolean excludeBlockItemRegistry(ResourceLocation registryName) {
         ArrayList<String> excludeBlocks = new ArrayList<>();
         excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_ACACIA_FENCE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_BIRCH_FENCE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_CRIMSON_FENCE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_DARK_OAK_FENCE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_JUNGLE_FENCE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_NETHER_BRICK_FENCE);
         excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_OAK_FENCE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_SPRUCE_FENCE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_WARPED_FENCE);
+
         return excludeBlocks.contains(registryName.toString());
     }
 

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "growthcraft:rope_linen",
+    "growthcraft:rope_linen_acacia_fence",
+    "growthcraft:rope_linen_birch_fence",
+    "growthcraft:rope_linen_crimson_fence",
+    "growthcraft:rope_linen_dark_oak_fence",
+    "growthcraft:rope_linen_jungle_fence",
+    "growthcraft:rope_linen_nether_brick_fence",
+    "growthcraft:rope_linen_oak_fence",
+    "growthcraft:rope_linen_spruce_fence",
+    "growthcraft:rope_linen_warped_fence"
+  ]
+}
