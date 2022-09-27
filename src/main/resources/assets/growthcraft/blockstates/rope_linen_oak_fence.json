@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "growthcraft:block/rope_fence_oak_linen"
+        "model": "minecraft:oak_fence_post"
       }
     },
     {

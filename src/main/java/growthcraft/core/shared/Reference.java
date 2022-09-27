@@ -43,6 +43,7 @@ public class Reference {
 
         public static final String ROPE = "rope";
         public static final String ROPE_LINEN = "rope_linen";
+        public static final String ROPE_LINEN_OAK_FENCE = "rope_linen_oak_fence";
 
         public static final String TAG_ROPE = "rope";
         public static final String TAG_ROPE_FENCE = "rope_fence";

@@ -1,6 +1,5 @@
 package growthcraft.core.init;
 
-import growthcraft.core.Growthcraft;
 import growthcraft.core.block.RopeBlock;
 import growthcraft.core.shared.Reference;
 import growthcraft.lib.block.GrowthcraftBlock;
@@ -11,7 +10,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -27,6 +25,9 @@ public class GrowthcraftBlocks {
             Reference.UnlocalizedName.ROPE_LINEN, RopeBlock::new
     );
 
+    public static final RegistryObject<RopeBlock> ROPE_LINEN_OAK_FENCE = BLOCKS.register(
+        Reference.UnlocalizedName.ROPE_LINEN_OAK_FENCE, RopeBlock::new
+    );
 
     public static final RegistryObject<Block> SALT_BLOCK = BLOCKS.register(
             Reference.UnlocalizedName.SALT_BLOCK, () -> new GrowthcraftBlock(Material.STONE, SoundType.STONE)
@@ -49,6 +50,7 @@ public class GrowthcraftBlocks {
     private static boolean excludeBlockItemRegistry(ResourceLocation registryName) {
         ArrayList<String> excludeBlocks = new ArrayList<>();
         excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.ROPE_LINEN_OAK_FENCE);
         return excludeBlocks.contains(registryName.toString());
     }
 
