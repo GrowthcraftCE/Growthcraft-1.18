@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BlockPropertiesUtils {
+public class  BlockPropertiesUtils {
 
     public static BlockBehaviour.Properties getInitProperties(String blockType, Block block) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.copy(block);

@@ -26,7 +26,12 @@ public class GrowthcraftOreGeneration {
 
     public static void registerConfiguredFeatures() {
 
-        OreConfiguration overworldConfig = new OreConfiguration(OreFeatures.STONE_ORE_REPLACEABLES, GrowthcraftBlocks.SALT_ORE.get().defaultBlockState(), GrowthcraftConfig.getSaltOreGenVeinSize());
+        OreConfiguration overworldConfig = new OreConfiguration(
+                OreFeatures.STONE_ORE_REPLACEABLES,
+                GrowthcraftBlocks.SALT_ORE.get().defaultBlockState(),
+                GrowthcraftConfig.getSaltOreGenVeinSize()
+        );
+
         OVERWORLD_SALT_ORE_PLACED_FEATURE = registerPlacedFeature("overworld_salt_ore", new ConfiguredFeature<>(Feature.ORE, overworldConfig),
                 CountPlacement.of(GrowthcraftConfig.getSaltOreGenSpreadAmount()),
                 InSquarePlacement.spread(),

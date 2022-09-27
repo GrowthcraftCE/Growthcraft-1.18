@@ -33,6 +33,7 @@ public class Growthcraft {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
+        //modEventBus.addListener(GrowthcraftOreGeneration::onBiomeLoadingEvent);
 
         GrowthcraftConfig.loadConfig();
 
@@ -48,7 +49,9 @@ public class Growthcraft {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // Do nothing for now ...
+        //event.enqueueWork( () -> {
+        //   GrowthcraftOreGeneration.registerConfiguredFeatures();
+        //});
     }
 
     @SubscribeEvent
@@ -63,11 +66,5 @@ public class Growthcraft {
         GrowthcraftBlocks.registerBlockItems(itemRegistry, properties);
     }
 
-    @SubscribeEvent
-    public static void onBiomeLoadingEvent(final BiomeLoadingEvent event) {
-        GrowthcraftOreGeneration.registerConfiguredFeatures();
-    }
 
-
-
-    }
+}
