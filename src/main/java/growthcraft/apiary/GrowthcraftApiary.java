@@ -4,7 +4,9 @@ import growthcraft.apiary.init.GrowthcraftApiaryBlocks;
 import growthcraft.apiary.init.GrowthcraftApiaryFluids;
 import growthcraft.apiary.init.GrowthcraftApiaryItems;
 import growthcraft.apiary.shared.Reference;
+import growthcraft.lib.client.GrowthcraftItemColor;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -62,5 +64,11 @@ public class GrowthcraftApiary {
         final IForgeRegistry<Item> itemRegistry = event.getRegistry();
         final Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.CREATIVE_TAB);
         //GrowthcraftApiaryBlocks.registerBlockItems(itemRegistry, properties);
+    }
+
+    @SubscribeEvent
+    public static void onColorHandle(ColorHandlerEvent.Item event) {
+        GrowthcraftItemColor itemColor = new GrowthcraftItemColor();
+        event.getItemColors().register(itemColor, GrowthcraftApiaryItems.BUCKET_HONEY.get());
     }
 }
