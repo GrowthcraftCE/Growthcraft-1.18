@@ -18,7 +18,11 @@ public class GrowthcraftBucketItem extends BucketItem {
         this.color = color.getRGB();
     }
 
-    public int getColor() {
+    public boolean hasColor(ItemStack stack) {
+        return true;
+    }
+
+    public int getColor(ItemStack stack) {
         return this.color;
     }
 

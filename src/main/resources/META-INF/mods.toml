@@ -63,6 +63,22 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[mods]]
+modId = "growthcraft_bamboo"
+version = "7.0.0"
+displayName = "Growthcraft Bamboo"
+logoFile = "growthcraft_bamboo_logo.png"
+description = '''
+  Growthcraft Bamboo adds more ways to grow bamboo and to craft with it.
+'''
+
+[[dependencies.growthcraft_apples]]
+modId = "growthcraft"
+mandatory = true
+versionRange = "[7,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mods]]
 modId = "growthcraft_cellar"
 version = "7.0.0"
 displayName = "Growthcraft Cellar"

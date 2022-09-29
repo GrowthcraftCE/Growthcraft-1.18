@@ -43,6 +43,7 @@ public class GrowthcraftApiary {
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {
         // Do nothing for now ...
+
     }
 
     private void setup(final FMLCommonSetupEvent event) {

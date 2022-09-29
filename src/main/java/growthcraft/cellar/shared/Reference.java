@@ -5,9 +5,8 @@ import org.codehaus.plexus.util.StringUtils;
 public class Reference {
     public static final String NAME_SHORT = "cellar";
 
-    public static final String MODID = String.format("%s_%s",
-            growthcraft.core.shared.Reference.MODID,
-            NAME_SHORT);
+    public static final String MODID = growthcraft.core.shared.Reference.MODID + "_" + NAME_SHORT;
+
     public static final String NAME = String.format("%s %s",
             growthcraft.core.shared.Reference.NAME,
             StringUtils.capitalise(NAME_SHORT));
