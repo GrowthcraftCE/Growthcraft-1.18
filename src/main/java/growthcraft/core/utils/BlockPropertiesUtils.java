@@ -32,19 +32,19 @@ public class  BlockPropertiesUtils {
 
     }
 
-    private static Boolean never(BlockState state, BlockGetter world, BlockPos pos, EntityType<?> entity) {
+    public static Boolean never(BlockState state, BlockGetter world, BlockPos pos, EntityType<?> entity) {
         return BlockPropertiesUtils.never(state, world, pos);
     }
 
-    private static Boolean always(BlockState state, BlockGetter world, BlockPos pos, EntityType<?> entity) {
+    public static Boolean always(BlockState state, BlockGetter world, BlockPos pos, EntityType<?> entity) {
         return BlockPropertiesUtils.always(state, world, pos);
     }
 
-    private static boolean always(BlockState state, BlockGetter world, BlockPos pos) {
+    public static boolean always(BlockState state, BlockGetter world, BlockPos pos) {
         return true;
     }
 
-    private static boolean never(BlockState state, BlockGetter world, BlockPos pos) {
+    public static boolean never(BlockState state, BlockGetter world, BlockPos pos) {
         return false;
     }
 }

@@ -45,7 +45,7 @@ public class GrowthcraftApples {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // Do Nothing for now ...
+        GrowthcraftApplesItems.registerCompostables();
     }
 
     @SubscribeEvent

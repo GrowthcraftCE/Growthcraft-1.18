@@ -1,6 +1,8 @@
 package growthcraft.apples.init;
 
+import growthcraft.apples.block.AppleTreeLeaves;
 import growthcraft.apples.shared.Reference;
+import growthcraft.apples.world.feature.tree.AppleTreeGrower;
 import growthcraft.lib.block.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -60,8 +62,17 @@ public class GrowthcraftApplesBlocks {
     );
 
     // TODO: APPLE_TREE_FRUIT block.
-    // TODO: APPLE_TREE_LEAVES block.
-    // TODO: APPLE_TREE_SAPLING block.
+    public static final RegistryObject<Block> APPLE_TREE_LEAVES = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_TREE_LEAVES,
+            AppleTreeLeaves::new
+    );
+
+    public static final RegistryObject<GrowthcraftSaplingBlock> APPLE_TREE_SAPLING = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_TREE_SAPLING,
+            () -> new GrowthcraftSaplingBlock(
+                new AppleTreeGrower()
+            )
+    );
 
     public static final RegistryObject<GrowthcraftLogBlock> APPLE_WOOD = BLOCKS.register(
             Reference.UnlocalizedName.APPLE_WOOD,
