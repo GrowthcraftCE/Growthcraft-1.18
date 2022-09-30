@@ -1,0 +1,105 @@
+package growthcraft.apples.init;
+
+import growthcraft.apples.shared.Reference;
+import growthcraft.lib.block.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
+
+public class GrowthcraftApplesBlocks {
+
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(
+            ForgeRegistries.BLOCKS, Reference.MODID
+    );
+
+    public static final RegistryObject<GrowthcraftPlankBlock> APPLE_PLANK = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_PLANK,
+            GrowthcraftPlankBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftButtonBlock> APPLE_PLANK_BUTTON = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_PLANK_BUTTON,
+            GrowthcraftButtonBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftDoorBlock> APPLE_PLANK_DOOR = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_PLANK_DOOR,
+            GrowthcraftDoorBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftFenceBlock> APPLE_PLANK_FENCE = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_PLANK_FENCE,
+            GrowthcraftFenceBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftFenceGateBlock> APPLE_PLANK_FENCE_GATE = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_PLANK_FENCE_GATE,
+            GrowthcraftFenceGateBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftSlabBlock> APPLE_PLANK_SLAB = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_PLANK_SLAB,
+            GrowthcraftSlabBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftStairsBlock> APPLE_PLANK_STAIRS = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_PLANK_STAIRS,
+            GrowthcraftStairsBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftTrapDoorBlock> APPLE_PLANK_TRAPDOOR = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_PLANK_TRAPDOOR,
+            GrowthcraftTrapDoorBlock::new
+    );
+
+    // TODO: APPLE_TREE_FRUIT block.
+    // TODO: APPLE_TREE_LEAVES block.
+    // TODO: APPLE_TREE_SAPLING block.
+
+    public static final RegistryObject<GrowthcraftLogBlock> APPLE_WOOD = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_WOOD,
+            GrowthcraftLogBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftLogBlock> APPLE_WOOD_LOG = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_WOOD_LOG,
+            GrowthcraftLogBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftLogBlock> APPLE_WOOD_LOG_STRIPPED = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_WOOD_LOG_STRIPPED,
+            GrowthcraftLogBlock::new
+    );
+
+    public static final RegistryObject<GrowthcraftLogBlock> APPLE_WOOD_STRIPPED = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_WOOD_STRIPPED,
+            GrowthcraftLogBlock::new
+    );
+
+    public static void registerBlockItems(IForgeRegistry<Item> itemRegistry, Item.Properties properties) {
+        BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
+            if (block.getRegistryName() != null && !excludeBlockItemRegistry(block.getRegistryName())) {
+                final BlockItem blockItem = new BlockItem(block, properties);
+                blockItem.setRegistryName(block.getRegistryName());
+                itemRegistry.register(blockItem);
+            }
+        });
+    }
+
+    private static boolean excludeBlockItemRegistry(ResourceLocation registryName) {
+        ArrayList<String> excludeBlocks = new ArrayList<>();
+        //excludeBlocks.add(growthcraft.core.shared.Reference.MODID + ":" + growthcraft.core.shared.Reference.UnlocalizedName.ROPE_LINEN);
+
+        return excludeBlocks.contains(registryName.toString());
+    }
+
+
+
+}

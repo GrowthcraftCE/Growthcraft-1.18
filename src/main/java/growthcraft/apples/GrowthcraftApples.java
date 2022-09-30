@@ -1,7 +1,12 @@
 package growthcraft.apples;
 
+import growthcraft.apples.init.GrowthcraftApplesBlocks;
+import growthcraft.apples.init.GrowthcraftApplesFluids;
+import growthcraft.apples.init.GrowthcraftApplesItems;
+import growthcraft.apples.init.client.GrowthcraftApplesItemRenders;
 import growthcraft.apples.shared.Reference;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -28,6 +33,9 @@ public class GrowthcraftApples {
         // Config
 
         // Blocks, Items, Fluids, Block Entities, Containers
+        GrowthcraftApplesBlocks.BLOCKS.register(modEventBus);
+        GrowthcraftApplesItems.ITEMS.register(modEventBus);
+        GrowthcraftApplesFluids.FLUIDS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -49,6 +57,11 @@ public class GrowthcraftApples {
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         final IForgeRegistry<Item> itemRegistry = event.getRegistry();
         final Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.CREATIVE_TAB);
-        //GrowthcraftApplesBlocks.registerBlockItems(itemRegistry, properties);
+        GrowthcraftApplesBlocks.registerBlockItems(itemRegistry, properties);
+    }
+
+    @SubscribeEvent
+    public static void onColorHandle(ColorHandlerEvent.Item event) {
+        GrowthcraftApplesItemRenders.registerItemRenders(event);
     }
 }

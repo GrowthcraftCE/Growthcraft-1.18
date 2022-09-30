@@ -1,5 +1,6 @@
 package growthcraft.apiary.init;
 
+import com.google.common.collect.ImmutableList;
 import growthcraft.apiary.shared.Reference;
 import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftItem;
@@ -8,6 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 public class GrowthcraftApiaryItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(
@@ -238,6 +241,12 @@ public class GrowthcraftApiaryItems {
             Reference.UnlocalizedName.HONEY_COMB_FULL, GrowthcraftItem::new
     );
 
+    public static final List<RegistryObject<? extends Item>> BUCKETS = ImmutableList.of(
+        BUCKET_HONEY, BUCKET_HONEY_MEAD, BUCKET_WAX_BLACK, BUCKET_WAX_BLUE, BUCKET_WAX_BROWN,
+        BUCKET_WAX_CYAN, BUCKET_WAX_GRAY, BUCKET_WAX_GREEN, BUCKET_WAX_LIGHT_BLUE, BUCKET_WAX_LIGHT_GRAY,
+        BUCKET_WAX_LIME, BUCKET_WAX_MAGENTA, BUCKET_WAX_ORANGE, BUCKET_WAX_PINK, BUCKET_WAX_PURPLE, BUCKET_WAX_RED,
+        BUCKET_WAX_WHITE, BUCKET_WAX_YELLOW
+    );
 
     private GrowthcraftApiaryItems() {
         /* Prevent default public constructor */
