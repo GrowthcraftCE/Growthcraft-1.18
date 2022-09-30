@@ -31,7 +31,7 @@ public class GrowthcraftBucketItem extends BucketItem implements ItemColor {
 
     @Override
     public int getColor(ItemStack stack, int layer) {
-        return layer == 0 ? this.color : 0;
+        return layer == 0 ? t  his.color : 0;
     }
 
     public int getColor(int layer) {
