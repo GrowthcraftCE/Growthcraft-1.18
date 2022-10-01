@@ -3,6 +3,7 @@ package growthcraft.apples;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesFluids;
 import growthcraft.apples.init.GrowthcraftApplesItems;
+import growthcraft.apples.init.client.GrowthcraftApplesBlockRenderers;
 import growthcraft.apples.init.client.GrowthcraftApplesItemRenders;
 import growthcraft.apples.shared.Reference;
 import net.minecraft.world.item.Item;
@@ -41,7 +42,7 @@ public class GrowthcraftApples {
     }
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {
-        // Do nothing for now ...
+        GrowthcraftApplesBlockRenderers.setRenderLayers();
     }
 
     private void setup(final FMLCommonSetupEvent event) {

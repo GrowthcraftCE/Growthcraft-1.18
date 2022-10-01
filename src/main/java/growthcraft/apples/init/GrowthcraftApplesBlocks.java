@@ -1,5 +1,6 @@
 package growthcraft.apples.init;
 
+import growthcraft.apples.block.AppleTreeFruit;
 import growthcraft.apples.block.AppleTreeLeaves;
 import growthcraft.apples.shared.Reference;
 import growthcraft.apples.world.feature.tree.AppleTreeGrower;
@@ -61,7 +62,11 @@ public class GrowthcraftApplesBlocks {
             GrowthcraftTrapDoorBlock::new
     );
 
-    // TODO: APPLE_TREE_FRUIT block.
+    public static final RegistryObject<AppleTreeFruit> APPLE_TREE_FRUIT = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_TREE_FRUIT,
+            AppleTreeFruit::new
+    );
+
     public static final RegistryObject<Block> APPLE_TREE_LEAVES = BLOCKS.register(
             Reference.UnlocalizedName.APPLE_TREE_LEAVES,
             AppleTreeLeaves::new

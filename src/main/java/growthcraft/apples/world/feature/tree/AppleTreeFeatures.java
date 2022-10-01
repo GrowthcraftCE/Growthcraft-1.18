@@ -20,14 +20,17 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import java.util.List;
 
 public class AppleTreeFeatures {
+
+    // StraightTrunkPlacer( baseHieght, randomA, randomB )
+    // BlobFoliagePlacer( radius, offset, height )
     public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> APPLE_TREE = FeatureUtils.register(
             "apple_tree",
             Feature.TREE,
             new TreeConfiguration.TreeConfigurationBuilder(
                     BlockStateProvider.simple(GrowthcraftApplesBlocks.APPLE_WOOD_LOG.get()),
-                    new StraightTrunkPlacer(5, 6, 3),
+                    new StraightTrunkPlacer(6, 1, 1),
                     BlockStateProvider.simple(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get()),
-                    new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 4),
+                    new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                     new TwoLayersFeatureSize(1, 0, 2)
             ).build()
     );
