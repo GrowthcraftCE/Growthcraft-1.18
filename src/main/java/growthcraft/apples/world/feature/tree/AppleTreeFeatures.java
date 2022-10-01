@@ -51,7 +51,7 @@ public class AppleTreeFeatures {
             "apple_tree_placed",
             APPLE_TREE_SPAWN,
             VegetationPlacements.treePlacement(
-                    PlacementUtils.countExtra(3, 0.1f, 2)
+                    PlacementUtils.countExtra(0, 0.05f, 1)
             )
     );
 }

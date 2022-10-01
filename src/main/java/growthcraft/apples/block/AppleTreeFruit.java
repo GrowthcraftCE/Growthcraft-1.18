@@ -17,7 +17,10 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -54,8 +57,8 @@ public class AppleTreeFruit extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState p_52302_, BlockGetter p_52303_, BlockPos p_52304_) {
-        return p_52302_.is(Blocks.FARMLAND);
+    protected boolean mayPlaceOn(BlockState state, @NotNull BlockGetter blockGetter, @NotNull BlockPos blockPos) {
+        return state.is(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get());
     }
 
     public IntegerProperty getAgeProperty() {
@@ -161,7 +164,7 @@ public class AppleTreeFruit extends BushBlock implements BonemealableBlock {
             }
         }
 
-        return f;
+        return f * 2.0F;
     }
 
     @Override

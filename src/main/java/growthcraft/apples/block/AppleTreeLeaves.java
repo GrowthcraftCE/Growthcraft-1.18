@@ -54,11 +54,11 @@ public class AppleTreeLeaves extends LeavesBlock {
                 validGrowthPos.add(p);
             }
         }
-
         if (applesInArea < MAX_APPLES_IN_AREA && validGrowthPos.size() > 0) {
             BlockPos spawnBlockPos = validGrowthPos.get(random.nextInt(validGrowthPos.size()));
+
             if (level.getBlockState(spawnBlockPos).isAir() && level.getBlockState(spawnBlockPos.above()).getBlock() == GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get()) {
-                level.setBlock(spawnBlockPos, GrowthcraftApplesBlocks.APPLE_TREE_FRUIT.get().defaultBlockState(), 11);
+                level.setBlock(spawnBlockPos, GrowthcraftApplesBlocks.APPLE_TREE_FRUIT.get().defaultBlockState(), 2);
             }
         }
 
