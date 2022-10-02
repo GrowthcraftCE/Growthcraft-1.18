@@ -24,6 +24,14 @@ public class GrowthcraftApplesItems {
             AppleSeedsItem::new
     );
 
+    public static final RegistryObject<GrowthcraftBucketItem> BUCKET_APPLE_CIDER = ITEMS.register(
+            FluidUtils.getFluidNames(Reference.UnlocalizedName.APPLE_CIDER).get(FluidUtils.BUCKET),
+            () -> new GrowthcraftBucketItem(
+                    GrowthcraftApplesFluids.APPLE_CIDER_FLUID_STILL,
+                    Reference.FluidColor.APPLE_CIDER_FLUID_COLOR.getColor()
+            )
+    );
+
     public static final RegistryObject<GrowthcraftBucketItem> BUCKET_APPLE_JUICE = ITEMS.register(
             FluidUtils.getFluidNames(Reference.UnlocalizedName.APPLE_JUICE).get(FluidUtils.BUCKET),
             () -> new GrowthcraftBucketItem(
@@ -33,7 +41,7 @@ public class GrowthcraftApplesItems {
     );
 
     public static final List<RegistryObject<? extends Item>> BUCKETS = ImmutableList.of(
-            BUCKET_APPLE_JUICE
+            BUCKET_APPLE_CIDER, BUCKET_APPLE_JUICE
     );
 
     public static void registerCompostables() {

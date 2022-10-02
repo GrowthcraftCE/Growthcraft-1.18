@@ -5,6 +5,7 @@ import growthcraft.apples.block.AppleTreeLeaves;
 import growthcraft.apples.shared.Reference;
 import growthcraft.apples.world.feature.tree.AppleTreeGrower;
 import growthcraft.lib.block.*;
+import growthcraft.lib.utils.FluidUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -111,11 +112,9 @@ public class GrowthcraftApplesBlocks {
 
     private static boolean excludeBlockItemRegistry(ResourceLocation registryName) {
         ArrayList<String> excludeBlocks = new ArrayList<>();
-        //excludeBlocks.add(growthcraft.core.shared.Reference.MODID + ":" + growthcraft.core.shared.Reference.UnlocalizedName.ROPE_LINEN);
-
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.APPLE_TREE_FRUIT);
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.APPLE_CIDER).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.APPLE_JUICE).get(FluidUtils.BLOCK));
         return excludeBlocks.contains(registryName.toString());
     }
-
-
-
 }
