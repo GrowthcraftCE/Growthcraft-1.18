@@ -1,5 +1,6 @@
 package growthcraft.bamboo;
 
+import growthcraft.bamboo.init.GrowthcraftBambooBlocks;
 import growthcraft.bamboo.shared.Reference;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,6 +30,7 @@ public class GrowthcraftBamboo {
         // Config
 
         // Blocks, Items, Fluids, Block Entities, Containers
+        GrowthcraftBambooBlocks.BLOCKS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -43,13 +45,13 @@ public class GrowthcraftBamboo {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("Growthcraft Apples starting up ...");
+        LOGGER.info("Growthcraft Bamboo starting up ...");
     }
 
     @SubscribeEvent
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         final IForgeRegistry<Item> itemRegistry = event.getRegistry();
         final Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.CREATIVE_TAB);
-        //GrowthcraftApplesBlocks.registerBlockItems(itemRegistry, properties);
+        GrowthcraftBambooBlocks.registerBlockItems(itemRegistry, properties);
     }
 }

@@ -48,6 +48,11 @@ public class GrowthcraftApplesBlocks {
             GrowthcraftFenceGateBlock::new
     );
 
+    public static final RegistryObject<GrowthcraftPressurePlateBlock> APPLE_PLANK_PRESSURE_PLATE = BLOCKS.register(
+            Reference.UnlocalizedName.APPLE_PLANK_PRESSURE_PLATE,
+            GrowthcraftPressurePlateBlock::new
+    );
+
     public static final RegistryObject<GrowthcraftSlabBlock> APPLE_PLANK_SLAB = BLOCKS.register(
             Reference.UnlocalizedName.APPLE_PLANK_SLAB,
             GrowthcraftSlabBlock::new
