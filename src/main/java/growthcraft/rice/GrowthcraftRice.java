@@ -1,7 +1,11 @@
 package growthcraft.rice;
 
+import growthcraft.rice.init.GrowthcraftRiceBlocks;
+import growthcraft.rice.init.GrowthcraftRiceFluids;
+import growthcraft.rice.init.GrowthcraftRiceItems;
 import growthcraft.rice.shared.Reference;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -28,12 +32,15 @@ public class GrowthcraftRice {
         // Config
 
         // Blocks, Items, Fluids, Block Entities, Containers
+        GrowthcraftRiceBlocks.BLOCKS.register(modEventBus);
+        GrowthcraftRiceItems.ITEMS.register(modEventBus);
+        GrowthcraftRiceFluids.FLUIDS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {
-        // Do nothing for now ...
+        // TODO: GrowthcraftRiceBlockRenderers.setRenderLayers();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -42,13 +49,18 @@ public class GrowthcraftRice {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("Growthcraft Apples starting up ...");
+        LOGGER.info("Growthcraft Rice starting up ...");
     }
 
     @SubscribeEvent
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         final IForgeRegistry<Item> itemRegistry = event.getRegistry();
         final Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.CREATIVE_TAB);
-        //GrowthcraftApplesBlocks.registerBlockItems(itemRegistry, properties);
+        GrowthcraftRiceBlocks.registerBlockItems(itemRegistry, properties);
+    }
+
+    @SubscribeEvent
+    public static void onColorHandle(ColorHandlerEvent.Item event) {
+        // TODO: GrowthcraftRiceItemRenders.registerItemRenders(event);
     }
 }

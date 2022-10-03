@@ -22,6 +22,7 @@ public class Reference {
         public static final String RICE_CROP = "rice_crop";
         public static final String RICE_STALK = "rice_stalk";
         public static final String SUSHI_ROLL = "sushi_roll";
+        // Fluids
         public static final String RICE_WATER = "rice_water";
         public static final String RICE_WINE = "rice_wine";
         public static final String SAKE = "sake";

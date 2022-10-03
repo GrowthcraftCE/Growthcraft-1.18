@@ -1,4 +1,32 @@
 package growthcraft.rice.item;
 
-public class RiceSeedItem {
+import growthcraft.lib.item.GrowthcraftItem;
+import growthcraft.rice.init.GrowthcraftRiceBlocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+
+public class RiceSeedItem extends GrowthcraftItem {
+
+    public RiceSeedItem() {
+        super();
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+        Level world = context.getLevel();
+        BlockPos blockpos = context.getClickedPos();
+        Block block = world.getBlockState(blockpos).getBlock();
+
+        if (block == GrowthcraftRiceBlocks.CULTIVATED_FARMLAND.get()) {
+            // Place a GrapeVineCrop
+            world.setBlock(blockpos.above(), GrowthcraftRiceBlocks.RICE_CROP.get().defaultBlockState(), Block.UPDATE_ALL);
+            context.getItemInHand().shrink(1);
+            return InteractionResult.SUCCESS;
+        } else {
+            return super.useOn(context);
+        }
+    }
 }
