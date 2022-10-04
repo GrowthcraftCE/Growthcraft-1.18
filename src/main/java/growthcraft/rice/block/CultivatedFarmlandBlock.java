@@ -42,7 +42,7 @@ public class CultivatedFarmlandBlock extends Block implements SimpleWaterloggedB
 
     public CultivatedFarmlandBlock() {
         super(getInitProperties());
-        this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, Integer.valueOf(0)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, Integer.valueOf(0)).setValue(WATERLOGGED, false));
     }
 
     private static Properties getInitProperties() {

@@ -3,6 +3,7 @@ package growthcraft.rice;
 import growthcraft.rice.init.GrowthcraftRiceBlocks;
 import growthcraft.rice.init.GrowthcraftRiceFluids;
 import growthcraft.rice.init.GrowthcraftRiceItems;
+import growthcraft.rice.init.client.GrowthcraftRiceBlockRenderers;
 import growthcraft.rice.shared.Reference;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -40,7 +41,7 @@ public class GrowthcraftRice {
     }
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {
-        // TODO: GrowthcraftRiceBlockRenderers.setRenderLayers();
+        GrowthcraftRiceBlockRenderers.setRenderLayers();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
