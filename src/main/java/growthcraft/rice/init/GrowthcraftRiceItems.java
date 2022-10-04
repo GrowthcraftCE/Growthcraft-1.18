@@ -75,9 +75,8 @@ public class GrowthcraftRiceItems {
             GrowthcraftFoodItem::new
     );
 
-    // TODO: Add Rice Water and Sake buckets
     public static final List<RegistryObject<? extends Item>> BUCKETS = ImmutableList.of(
-
+        BUCKET_RICE_WATER, BUCKET_RICE_WINE, BUCKET_SAKE
     );
 
     public static void registerCompostables() {
