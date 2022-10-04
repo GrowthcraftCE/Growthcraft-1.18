@@ -1,8 +1,10 @@
 package growthcraft.rice.init;
 
 import com.google.common.collect.ImmutableList;
+import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftFoodItem;
 import growthcraft.lib.item.GrowthcraftItem;
+import growthcraft.lib.utils.FluidUtils;
 import growthcraft.rice.item.CultivatorItem;
 import growthcraft.rice.item.RiceSeedItem;
 import growthcraft.rice.shared.Reference;
@@ -17,6 +19,30 @@ import java.util.List;
 public class GrowthcraftRiceItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(
             ForgeRegistries.ITEMS, Reference.MODID
+    );
+
+    public static final RegistryObject<GrowthcraftBucketItem> BUCKET_RICE_WATER = ITEMS.register(
+            FluidUtils.getFluidNames(Reference.UnlocalizedName.RICE_WATER).get(FluidUtils.BUCKET),
+            () -> new GrowthcraftBucketItem(
+                    GrowthcraftRiceFluids.RICE_WATER_FLUID_STILL,
+                    Reference.FluidColor.RICE_WATER_FLUID_COLOR.getColor()
+            )
+    );
+
+    public static final RegistryObject<GrowthcraftBucketItem> BUCKET_RICE_WINE = ITEMS.register(
+            FluidUtils.getFluidNames(Reference.UnlocalizedName.RICE_WINE).get(FluidUtils.BUCKET),
+            () -> new GrowthcraftBucketItem(
+                    GrowthcraftRiceFluids.RICE_WINE_FLUID_STILL,
+                    Reference.FluidColor.RICE_WINE_FLUID_COLOR.getColor()
+            )
+    );
+
+    public static final RegistryObject<GrowthcraftBucketItem> BUCKET_SAKE = ITEMS.register(
+            FluidUtils.getFluidNames(Reference.UnlocalizedName.SAKE).get(FluidUtils.BUCKET),
+            () -> new GrowthcraftBucketItem(
+                    GrowthcraftRiceFluids.SAKE_FLUID_STILL,
+                    Reference.FluidColor.SAKE_FLUID_COLOR.getColor()
+            )
     );
 
     public static final RegistryObject<CultivatorItem> CULTIVATOR = ITEMS.register(

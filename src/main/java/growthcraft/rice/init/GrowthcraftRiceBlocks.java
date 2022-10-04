@@ -1,5 +1,6 @@
 package growthcraft.rice.init;
 
+import growthcraft.lib.utils.FluidUtils;
 import growthcraft.rice.block.CultivatedFarmlandBlock;
 import growthcraft.rice.block.RiceCropBlock;
 import growthcraft.rice.shared.Reference;
@@ -41,7 +42,9 @@ public class GrowthcraftRiceBlocks {
         // Exclude any blocks that do not need to be accessible via the Creative tab
         //excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.APPLE_TREE_FRUIT);
         // Exclude Fluid Blocks
-        //excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.APPLE_CIDER).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.RICE_WATER).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.RICE_WINE).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.SAKE).get(FluidUtils.BLOCK));
         return excludeBlocks.contains(registryName.toString());
     }
 
