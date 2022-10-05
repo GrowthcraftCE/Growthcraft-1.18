@@ -1,7 +1,13 @@
 package growthcraft.milk;
 
+import growthcraft.milk.init.GrowthcraftMilkBlocks;
+import growthcraft.milk.init.GrowthcraftMilkFluids;
+import growthcraft.milk.init.GrowthcraftMilkItems;
+import growthcraft.milk.init.client.GrowthcraftMilkBlockRenderers;
+import growthcraft.milk.init.client.GrowthcraftMilkItemRenderers;
 import growthcraft.milk.shared.Reference;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -29,12 +35,15 @@ public class GrowthcraftMilk {
         // Config
 
         // Blocks, Items, Fluids, Block Entities, Containers
+        GrowthcraftMilkBlocks.BLOCKS.register(modEventBus);
+        GrowthcraftMilkItems.ITEMS.register(modEventBus);
+        GrowthcraftMilkFluids.FLUIDS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {
-        // Do nothing for now ...
+        GrowthcraftMilkBlockRenderers.setRenderLayers();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -43,13 +52,18 @@ public class GrowthcraftMilk {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("Growthcraft Apples starting up ...");
+        LOGGER.info("Growthcraft Milk starting up ...");
     }
 
     @SubscribeEvent
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         final IForgeRegistry<Item> itemRegistry = event.getRegistry();
         final Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.CREATIVE_TAB);
-        //GrowthcraftApplesBlocks.registerBlockItems(itemRegistry, properties);
+        GrowthcraftMilkBlocks.registerBlockItems(itemRegistry, properties);
+    }
+
+    @SubscribeEvent
+    public static void onColorHandle(ColorHandlerEvent.Item event) {
+        GrowthcraftMilkItemRenderers.registerItemRenders(event);
     }
 }
