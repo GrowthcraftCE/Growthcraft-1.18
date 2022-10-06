@@ -1,7 +1,13 @@
 package growthcraft.cellar;
 
+import growthcraft.cellar.init.GrowthcraftCellarBlocks;
+import growthcraft.cellar.init.GrowthcraftCellarFluids;
+import growthcraft.cellar.init.GrowthcraftCellarItems;
+import growthcraft.cellar.init.client.GrowthcraftCellarBlockRenderers;
+import growthcraft.cellar.init.client.GrowthcraftCellarItemRenderers;
 import growthcraft.cellar.shared.Reference;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -29,12 +35,15 @@ public class GrowthcraftCellar {
         // Config
 
         // Blocks, Items, Fluids, Block Entities, Containers
+        GrowthcraftCellarBlocks.BLOCKS.register(modEventBus);
+        GrowthcraftCellarItems.ITEMS.register(modEventBus);
+        GrowthcraftCellarFluids.FLUIDS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {
-        // Do nothing for now ...
+        GrowthcraftCellarBlockRenderers.setRenderLayers();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -43,13 +52,18 @@ public class GrowthcraftCellar {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("Growthcraft Apples starting up ...");
+        LOGGER.info("Growthcraft Cellar starting up ...");
     }
 
     @SubscribeEvent
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         final IForgeRegistry<Item> itemRegistry = event.getRegistry();
         final Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.CREATIVE_TAB);
-        //GrowthcraftApplesBlocks.registerBlockItems(itemRegistry, properties);
+        GrowthcraftCellarBlocks.registerBlockItems(itemRegistry, properties);
+    }
+
+    @SubscribeEvent
+    public static void onColorHandle(ColorHandlerEvent.Item event) {
+        GrowthcraftCellarItemRenderers.registerItemRenders(event);
     }
 }
