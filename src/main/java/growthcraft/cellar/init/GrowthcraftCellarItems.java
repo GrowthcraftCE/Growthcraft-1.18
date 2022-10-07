@@ -344,7 +344,7 @@ public class GrowthcraftCellarItems {
     );
 
     public static final List<RegistryObject<? extends Item>> GRAINS = List.of(
-
+            GRAIN_AMBER, GRAIN_BROWN
     );
 
     public static void registerCompostables() {

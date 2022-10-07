@@ -134,15 +134,15 @@ public class Reference {
     }
 
     public static class GrainColor {
-        public static final ColorUtils.GrowthcraftColor GRAIN = new ColorUtils.GrowthcraftColor(0xFF595903);
-        public static final ColorUtils.GrowthcraftColor GRAIN_AMBER = new ColorUtils.GrowthcraftColor(0xFF4c5304);
-        public static final ColorUtils.GrowthcraftColor GRAIN_BROWN = new ColorUtils.GrowthcraftColor(0xFF3f4c05);
-        public static final ColorUtils.GrowthcraftColor GRAIN_COPPER = new ColorUtils.GrowthcraftColor(0xFF334506);
-        public static final ColorUtils.GrowthcraftColor GRAIN_DARK = new ColorUtils.GrowthcraftColor(0xFF273f06);
-        public static final ColorUtils.GrowthcraftColor GRAIN_DEEP_AMBER = new ColorUtils.GrowthcraftColor(0xFF1d3806);
-        public static final ColorUtils.GrowthcraftColor GRAIN_DEEP_COPPER = new ColorUtils.GrowthcraftColor(0xFF133106);
-        public static final ColorUtils.GrowthcraftColor GRAIN_GOLDEN = new ColorUtils.GrowthcraftColor(0xFF092a04);
-        public static final ColorUtils.GrowthcraftColor GRAIN_PALE_GOLDEN = new ColorUtils.GrowthcraftColor(0xFF012301);
+        public static final ColorUtils.GrowthcraftColor GRAIN = new ColorUtils.GrowthcraftColor(0x595903);
+        public static final ColorUtils.GrowthcraftColor GRAIN_AMBER = new ColorUtils.GrowthcraftColor(0xFFbba04e);
+        public static final ColorUtils.GrowthcraftColor GRAIN_BROWN = new ColorUtils.GrowthcraftColor(0xFF3f2f15);
+        public static final ColorUtils.GrowthcraftColor GRAIN_COPPER = new ColorUtils.GrowthcraftColor(0xFF7c6430);
+        public static final ColorUtils.GrowthcraftColor GRAIN_DARK = new ColorUtils.GrowthcraftColor(0xFF241802);
+        public static final ColorUtils.GrowthcraftColor GRAIN_DEEP_AMBER = new ColorUtils.GrowthcraftColor(0xFF9b813e);
+        public static final ColorUtils.GrowthcraftColor GRAIN_DEEP_COPPER = new ColorUtils.GrowthcraftColor(0xFF5d4922);
+        public static final ColorUtils.GrowthcraftColor GRAIN_GOLDEN = new ColorUtils.GrowthcraftColor(0xFFdbc05d);
+        public static final ColorUtils.GrowthcraftColor GRAIN_PALE_GOLDEN = new ColorUtils.GrowthcraftColor(0xFFfae16e);
 
         private GrainColor() {
             /* Disable Automatic Creation of Public Constructor */

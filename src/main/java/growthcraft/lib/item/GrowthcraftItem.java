@@ -13,12 +13,12 @@ public class GrowthcraftItem extends Item implements ItemColor {
 
     public GrowthcraftItem() {
         this(64);
-        this.color = 0xFFFFFF;
+        this.color = 0x0;
     }
 
     public GrowthcraftItem(int maxStackSize) {
         super(getInitProperties(maxStackSize));
-        this.color = 0xFFFFFF;
+        this.color = 0x0;
     }
 
     public GrowthcraftItem(int maxStackSize, Color color) {
@@ -39,6 +39,6 @@ public class GrowthcraftItem extends Item implements ItemColor {
     }
 
     public int getColor(int layer) {
-        return layer == 0 ? this.color : 0xFFFFFF;
+        return layer == 0 ? this.color : 0x0;
     }
 }
