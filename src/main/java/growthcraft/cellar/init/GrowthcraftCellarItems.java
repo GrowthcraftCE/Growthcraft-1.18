@@ -270,6 +270,10 @@ public class GrowthcraftCellarItems {
             Reference.UnlocalizedName.GRAIN_AMBER, () -> new GrowthcraftItem(64, Reference.GrainColor.GRAIN_AMBER.getColor())
     );
 
+    public static final RegistryObject<GrowthcraftItem> GRAIN_BROWN = ITEMS.register(
+            Reference.UnlocalizedName.GRAIN_BROWN, () -> new GrowthcraftItem(64, Reference.GrainColor.GRAIN_BROWN.getColor())
+    );
+
     public static final RegistryObject<GrowthcraftFoodItem> GRAPE_PURPLE = ITEMS.register(
             Reference.UnlocalizedName.GRAPE_PURPLE, GrowthcraftFoodItem::new
     );
