@@ -20,15 +20,15 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.awt.*;
 
-import static growthcraft.cellar.shared.Reference.FluidColor.AMBER_LAGER;
+import static growthcraft.cellar.shared.Reference.FluidColor.WORT;
 
-public class AmberLagerFluid extends ForgeFlowingFluid {
+public class WortFluid extends ForgeFlowingFluid {
 
-    private static final RegistryObject<AmberLagerFluid.Flowing> REGISTRY_FLUID_FLOWING = GrowthcraftCellarFluids.AMBER_LAGER_FLUID_FLOWING;
-    private static final RegistryObject<AmberLagerFluid.Source> REGISTRY_FLUID_STILL = GrowthcraftCellarFluids.AMBER_LAGER_FLUID_STILL;
-    private static final RegistryObject<LiquidBlock> block = GrowthcraftCellarFluids.AMBER_LAGER_FLUID_BLOCK;
-    private static final ColorUtils.GrowthcraftColor color = AMBER_LAGER;
-    private static final RegistryObject<GrowthcraftBucketItem> registry_bucket = GrowthcraftCellarItems.BUCKET_AMBER_LAGER;
+    private static final RegistryObject<WortFluid.Flowing> REGISTRY_FLUID_FLOWING = GrowthcraftCellarFluids.WORT_FLUID_FLOWING;
+    private static final RegistryObject<WortFluid.Source> REGISTRY_FLUID_STILL = GrowthcraftCellarFluids.WORT_FLUID_STILL;
+    private static final RegistryObject<LiquidBlock> block = GrowthcraftCellarFluids.WORT_FLUID_BLOCK;
+    private static final ColorUtils.GrowthcraftColor color = WORT;
+    private static final RegistryObject<GrowthcraftBucketItem> registry_bucket = GrowthcraftCellarItems.BUCKET_WORT;
 
     public static final Properties FLUID_PROPERTIES = new Properties(
             REGISTRY_FLUID_STILL,
@@ -41,7 +41,7 @@ public class AmberLagerFluid extends ForgeFlowingFluid {
             .block(block)
             .bucket(registry_bucket);
 
-    protected AmberLagerFluid(Properties properties) {
+    protected WortFluid(Properties properties) {
         super(properties);
     }
 
@@ -74,7 +74,7 @@ public class AmberLagerFluid extends ForgeFlowingFluid {
         return false;
     }
 
-    public static class Flowing extends AmberLagerFluid {
+    public static class Flowing extends WortFluid {
         public Flowing() {
             super(FLUID_PROPERTIES);
             registerDefaultState(getStateDefinition().any().setValue(LEVEL, 7));
@@ -98,7 +98,7 @@ public class AmberLagerFluid extends ForgeFlowingFluid {
         }
     }
 
-    public static class Source extends AmberLagerFluid {
+    public static class Source extends WortFluid {
         public Source() {
             super(FLUID_PROPERTIES);
         }

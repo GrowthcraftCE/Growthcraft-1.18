@@ -73,15 +73,15 @@ public class Reference {
         public static final String POTION_LAGER = "potion_lager";
         public static final String POTION_WINE = "potion_wine";
         public static final String PURPLE_GRAPE_JUICE = "purple_grape_juice";
-        public static final String PURPLE_WINE = "purple_wine";
+        public static final String PURPLE_GRAPE_WINE = "purple_wine";
         public static final String RED_GRAPE_JUICE = "red_grape_juice";
-        public static final String RED_WINE = "red_wine";
+        public static final String RED_GRAPE_WINE = "red_wine";
         public static final String ROASTER = "roaster";
         public static final String ROASTER_RECIPE = "roaster_recipe";
         public static final String STOUT_ALE = "stout_ale";
         public static final String VIENNA_LAGER = "vienna_lager";
         public static final String WHITE_GRAPE_JUICE = "white_grape_juice";
-        public static final String WHITE_WINE = "white_wine";
+        public static final String WHITE_GRAPE_WINE = "white_wine";
         public static final String WORT = "wort";
         public static final String YEAST_BAYANUS = "yeast_bayanus";
         public static final String YEAST_BAYANUS_ETHEREAL = "yeast_bayanus_ethereal";
@@ -97,11 +97,11 @@ public class Reference {
     }
 
     public static class FluidColor {
-        public static final ColorUtils.GrowthcraftColor AMBER_ALE_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFFBC6633);
-        public static final ColorUtils.GrowthcraftColor AMBER_LAGER_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFFAB5E2F);
+        public static final ColorUtils.GrowthcraftColor AMBER_ALE = new ColorUtils.GrowthcraftColor(0xFFBC6633);
+        public static final ColorUtils.GrowthcraftColor AMBER_LAGER = new ColorUtils.GrowthcraftColor(0xFFAB5E2F);
         public static final ColorUtils.GrowthcraftColor AMBER_WORT_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFFE5C7A2);
         public static final ColorUtils.GrowthcraftColor BROWN_ALE_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF5C311A);
-        public static final ColorUtils.GrowthcraftColor BROWN_LAGER_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF401F1C);
+        public static final ColorUtils.GrowthcraftColor BROWN_LAGER = new ColorUtils.GrowthcraftColor(0xFF401F1C);
         public static final ColorUtils.GrowthcraftColor BROWN_WORT_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF594732);
         public static final ColorUtils.GrowthcraftColor COPPER_ALE_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF8E4B31);
         public static final ColorUtils.GrowthcraftColor COPPER_LAGER_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF6F3D1F);
@@ -118,17 +118,33 @@ public class Reference {
         public static final ColorUtils.GrowthcraftColor PALE_GOLDEN_WORT_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFFFBF855);
         public static final ColorUtils.GrowthcraftColor PALE_LAGER_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFFF3F33F);
         public static final ColorUtils.GrowthcraftColor PILSNER_LAGER_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFFF6D02E);
-        public static final ColorUtils.GrowthcraftColor PURPLE_GRAPE_JUICE_COLOR = new ColorUtils.GrowthcraftColor(0xFF682961);
-        public static final ColorUtils.GrowthcraftColor PURPLE_WINE_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF562251);
-        public static final ColorUtils.GrowthcraftColor RED_GRAPE_JUICE_COLOR = new ColorUtils.GrowthcraftColor(0xFFA63F4A);
-        public static final ColorUtils.GrowthcraftColor RED_WINE_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF8A343D);
-        public static final ColorUtils.GrowthcraftColor STOUT_ALE_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF0E0A07);
-        public static final ColorUtils.GrowthcraftColor VIENNA_LAGER_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF904730);
-        public static final ColorUtils.GrowthcraftColor WHITE_GRAPE_JUICE_COLOR = new ColorUtils.GrowthcraftColor(0xFFB4C91C);
-        public static final ColorUtils.GrowthcraftColor WHITE_WINE_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFF96A817);
-        public static final ColorUtils.GrowthcraftColor WORT_FLUID_COLOR = new ColorUtils.GrowthcraftColor(0xFFD0AF4E);
+        public static final ColorUtils.GrowthcraftColor PURPLE_GRAPE_JUICE = new ColorUtils.GrowthcraftColor(0xFF682961);
+        public static final ColorUtils.GrowthcraftColor PURPLE_GRAPE_WINE = new ColorUtils.GrowthcraftColor(0xFF562251);
+        public static final ColorUtils.GrowthcraftColor RED_GRAPE_JUICE = new ColorUtils.GrowthcraftColor(0xFFA63F4A);
+        public static final ColorUtils.GrowthcraftColor RED_GRAPE_WINE = new ColorUtils.GrowthcraftColor(0xFF8A343D);
+        public static final ColorUtils.GrowthcraftColor STOUT_ALE = new ColorUtils.GrowthcraftColor(0xFF0E0A07);
+        public static final ColorUtils.GrowthcraftColor VIENNA_LAGER = new ColorUtils.GrowthcraftColor(0xFF904730);
+        public static final ColorUtils.GrowthcraftColor WHITE_GRAPE_JUICE = new ColorUtils.GrowthcraftColor(0xFFB4C91C);
+        public static final ColorUtils.GrowthcraftColor WHITE_GRAPE_WINE = new ColorUtils.GrowthcraftColor(0xFF96A817);
+        public static final ColorUtils.GrowthcraftColor WORT = new ColorUtils.GrowthcraftColor(0xFFD0AF4E);
 
         private FluidColor() {
+            /* Disable Automatic Creation of Public Constructor */
+        }
+    }
+
+    public static class GrainColor {
+        public static final ColorUtils.GrowthcraftColor GRAIN = new ColorUtils.GrowthcraftColor(0xFF595903);
+        public static final ColorUtils.GrowthcraftColor GRAIN_AMBER = new ColorUtils.GrowthcraftColor(0xFF4c5304);
+        public static final ColorUtils.GrowthcraftColor GRAIN_BROWN = new ColorUtils.GrowthcraftColor(0xFF3f4c05);
+        public static final ColorUtils.GrowthcraftColor GRAIN_COPPER = new ColorUtils.GrowthcraftColor(0xFF334506);
+        public static final ColorUtils.GrowthcraftColor GRAIN_DARK = new ColorUtils.GrowthcraftColor(0xFF273f06);
+        public static final ColorUtils.GrowthcraftColor GRAIN_DEEP_AMBER = new ColorUtils.GrowthcraftColor(0xFF1d3806);
+        public static final ColorUtils.GrowthcraftColor GRAIN_DEEP_COPPER = new ColorUtils.GrowthcraftColor(0xFF133106);
+        public static final ColorUtils.GrowthcraftColor GRAIN_GOLDEN = new ColorUtils.GrowthcraftColor(0xFF092a04);
+        public static final ColorUtils.GrowthcraftColor GRAIN_PALE_GOLDEN = new ColorUtils.GrowthcraftColor(0xFF012301);
+
+        private GrainColor() {
             /* Disable Automatic Creation of Public Constructor */
         }
     }

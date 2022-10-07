@@ -20,15 +20,15 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.awt.*;
 
-import static growthcraft.cellar.shared.Reference.FluidColor.AMBER_LAGER;
+import static growthcraft.cellar.shared.Reference.FluidColor.PURPLE_GRAPE_WINE;
 
-public class AmberLagerFluid extends ForgeFlowingFluid {
+public class PurpleGrapeWineFluid extends ForgeFlowingFluid {
 
-    private static final RegistryObject<AmberLagerFluid.Flowing> REGISTRY_FLUID_FLOWING = GrowthcraftCellarFluids.AMBER_LAGER_FLUID_FLOWING;
-    private static final RegistryObject<AmberLagerFluid.Source> REGISTRY_FLUID_STILL = GrowthcraftCellarFluids.AMBER_LAGER_FLUID_STILL;
-    private static final RegistryObject<LiquidBlock> block = GrowthcraftCellarFluids.AMBER_LAGER_FLUID_BLOCK;
-    private static final ColorUtils.GrowthcraftColor color = AMBER_LAGER;
-    private static final RegistryObject<GrowthcraftBucketItem> registry_bucket = GrowthcraftCellarItems.BUCKET_AMBER_LAGER;
+    private static final RegistryObject<PurpleGrapeWineFluid.Flowing> REGISTRY_FLUID_FLOWING = GrowthcraftCellarFluids.PURPLE_GRAPE_WINE_FLUID_FLOWING;
+    private static final RegistryObject<PurpleGrapeWineFluid.Source> REGISTRY_FLUID_STILL = GrowthcraftCellarFluids.PURPLE_GRAPE_WINE_FLUID_STILL;
+    private static final RegistryObject<LiquidBlock> block = GrowthcraftCellarFluids.PURPLE_GRAPE_WINE_FLUID_BLOCK;
+    private static final ColorUtils.GrowthcraftColor color = PURPLE_GRAPE_WINE;
+    private static final RegistryObject<GrowthcraftBucketItem> registry_bucket = GrowthcraftCellarItems.BUCKET_PURPLE_GRAPE_WINE;
 
     public static final Properties FLUID_PROPERTIES = new Properties(
             REGISTRY_FLUID_STILL,
@@ -41,7 +41,7 @@ public class AmberLagerFluid extends ForgeFlowingFluid {
             .block(block)
             .bucket(registry_bucket);
 
-    protected AmberLagerFluid(Properties properties) {
+    protected PurpleGrapeWineFluid(Properties properties) {
         super(properties);
     }
 
@@ -74,7 +74,7 @@ public class AmberLagerFluid extends ForgeFlowingFluid {
         return false;
     }
 
-    public static class Flowing extends AmberLagerFluid {
+    public static class Flowing extends PurpleGrapeWineFluid {
         public Flowing() {
             super(FLUID_PROPERTIES);
             registerDefaultState(getStateDefinition().any().setValue(LEVEL, 7));
@@ -98,7 +98,7 @@ public class AmberLagerFluid extends ForgeFlowingFluid {
         }
     }
 
-    public static class Source extends AmberLagerFluid {
+    public static class Source extends PurpleGrapeWineFluid {
         public Source() {
             super(FLUID_PROPERTIES);
         }

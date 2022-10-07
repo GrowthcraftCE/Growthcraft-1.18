@@ -20,12 +20,14 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.awt.*;
 
+import static growthcraft.cellar.shared.Reference.FluidColor.BROWN_LAGER;
+
 public class BrownLagerFluid extends ForgeFlowingFluid {
 
     private static final RegistryObject<BrownLagerFluid.Flowing> REGISTRY_FLUID_FLOWING = GrowthcraftCellarFluids.BROWN_LAGER_FLUID_FLOWING;
     private static final RegistryObject<BrownLagerFluid.Source> REGISTRY_FLUID_STILL = GrowthcraftCellarFluids.BROWN_LAGER_FLUID_STILL;
     private static final RegistryObject<LiquidBlock> block = GrowthcraftCellarFluids.BROWN_LAGER_FLUID_BLOCK;
-    private static final ColorUtils.GrowthcraftColor color = BROWN_LAGER_FLUID_COLOR;
+    private static final ColorUtils.GrowthcraftColor color = BROWN_LAGER;
     private static final RegistryObject<GrowthcraftBucketItem> registry_bucket = GrowthcraftCellarItems.BUCKET_BROWN_LAGER;
 
     public static final Properties FLUID_PROPERTIES = new Properties(
