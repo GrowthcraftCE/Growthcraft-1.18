@@ -4,6 +4,7 @@ import growthcraft.rice.init.GrowthcraftRiceBlocks;
 import growthcraft.rice.init.GrowthcraftRiceFluids;
 import growthcraft.rice.init.GrowthcraftRiceItems;
 import growthcraft.rice.init.client.GrowthcraftRiceBlockRenderers;
+import growthcraft.rice.init.client.GrowthcraftRiceItemRenderers;
 import growthcraft.rice.shared.Reference;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -62,6 +63,6 @@ public class GrowthcraftRice {
 
     @SubscribeEvent
     public static void onColorHandle(ColorHandlerEvent.Item event) {
-        // TODO: GrowthcraftRiceItemRenders.registerItemRenders(event);
+        GrowthcraftRiceItemRenderers.registerItemRenders(event);
     }
 }
