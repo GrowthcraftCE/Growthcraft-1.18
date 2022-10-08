@@ -1,6 +1,9 @@
 package growthcraft.milk.init;
 
 import growthcraft.lib.item.GrowthcraftBucketItem;
+import growthcraft.lib.item.GrowthcraftFoodItem;
+import growthcraft.lib.item.GrowthcraftItem;
+import growthcraft.lib.utils.CheeseUtils;
 import growthcraft.lib.utils.FluidUtils;
 import growthcraft.milk.item.MilkingBucketItem;
 import growthcraft.milk.shared.Reference;
@@ -95,6 +98,105 @@ public class GrowthcraftMilkItems {
                     GrowthcraftMilkFluids.WHEY_FLUID_STILL,
                     Reference.FluidColor.WHEY_FLUID_COLOR.getColor()
             )
+    );
+
+    public static final RegistryObject<GrowthcraftItem> BUTTER = ITEMS.register(
+            Reference.UnlocalizedName.BUTTER, GrowthcraftItem::new
+    );
+
+    public static final RegistryObject<GrowthcraftItem> BUTTER_SALTED = ITEMS.register(
+            Reference.UnlocalizedName.BUTTER_SALTED, GrowthcraftItem::new
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_APPENZELLER_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.APPENZELLER).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_ASIAGO_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.ASIAGO).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_CASU_MARZU_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.CASU_MARZU).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_CHEDDAR_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.CHEDDAR).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftItem> CHEESE_CLOTH = ITEMS.register(
+            Reference.UnlocalizedName.CHEESE_CLOTH, GrowthcraftItem::new
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_EMMENTALER_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.EMMENTALER).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_GORGONZOLA_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.GORGONZOLA).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_GOUDA_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.GOUDA).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_MONTEREY_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.MONTEREY).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_PARMESAN_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.PARMESAN).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_PROVOLONE_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.PROVOLONE).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.3F, 64)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> CHEESE_RICOTTA_SLICE = ITEMS.register(
+            CheeseUtils.getCheeseNames(Reference.UnlocalizedName.RICOTTA).get(CheeseUtils.SLICE),
+            () -> new GrowthcraftFoodItem(2, 0.4F, 16)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> ICE_CREAM_APPLE = ITEMS.register(
+            Reference.UnlocalizedName.ICE_CREAM_APPLE, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> ICE_CREAM_CHOCOLATE  = ITEMS.register(
+            Reference.UnlocalizedName.ICE_CREAM_CHOCOLATE , () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> ICE_CREAM_GRAPE_PURPLE   = ITEMS.register(
+            Reference.UnlocalizedName.ICE_CREAM_GRAPE_PURPLE  , () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> ICE_CREAM_GRAPE_RED   = ITEMS.register(
+            Reference.UnlocalizedName.ICE_CREAM_GRAPE_RED  , () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> ICE_CREAM_GRAPE_WHITE   = ITEMS.register(
+            Reference.UnlocalizedName.ICE_CREAM_GRAPE_WHITE  , () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> ICE_CREAM_PUMPKIN   = ITEMS.register(
+            Reference.UnlocalizedName.ICE_CREAM_PUMPKIN  , () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> ICE_CREAM_WATERMELON   = ITEMS.register(
+            Reference.UnlocalizedName.ICE_CREAM_WATERMELON  , () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> ICE_CREAM_HONEY   = ITEMS.register(
+            Reference.UnlocalizedName.ICE_CREAM_HONEY  , () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
     );
 
     public static final RegistryObject<MilkingBucketItem> MILKING_BUCKET_IRON = ITEMS.register(
