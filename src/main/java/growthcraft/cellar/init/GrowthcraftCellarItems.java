@@ -1,5 +1,6 @@
 package growthcraft.cellar.init;
 
+import growthcraft.cellar.item.CellarPotionItem;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftFoodItem;
@@ -322,11 +323,17 @@ public class GrowthcraftCellarItems {
 
     // TODO: HOPS_SEEDS
 
-    // TODO: POTION_ALE
+    public static final RegistryObject<CellarPotionItem> POTION_ALE = ITEMS.register(
+            Reference.UnlocalizedName.POTION_ALE, CellarPotionItem::new
+    );
 
-    // TODO: POTION_LAGER
+    public static final RegistryObject<CellarPotionItem> POTION_LAGER = ITEMS.register(
+            Reference.UnlocalizedName.POTION_LAGER, CellarPotionItem::new
+    );
 
-    // TODO: POTION_WINE
+    public static final RegistryObject<CellarPotionItem> POTION_WINE = ITEMS.register(
+            Reference.UnlocalizedName.POTION_WINE, CellarPotionItem::new
+    );
 
     public static final RegistryObject<GrowthcraftItem> YEAST_BAYANUS = ITEMS.register(
             Reference.UnlocalizedName.YEAST_BAYANUS, GrowthcraftItem::new
@@ -364,7 +371,11 @@ public class GrowthcraftCellarItems {
             BUCKET_OLD_PORT_ALE, BUCKET_PALE_ALE, BUCKET_PALE_GOLDEN_WORT, BUCKET_PALE_LAGER, BUCKET_PILSNER_LAGER,
             BUCKET_PURPLE_GRAPE_JUICE, BUCKET_PURPLE_GRAPE_WINE, BUCKET_RED_GRAPE_JUICE, BUCKET_RED_GRAPE_WINE,
             BUCKET_STOUT_ALE, BUCKET_VIENNA_LAGER, BUCKET_WHITE_GRAPE_JUICE, BUCKET_WHITE_GRAPE_WINE, BUCKET_WORT,
-            BUCKET_HOPPED_GOLDEN_WORT
+            BUCKET_HOPPED_GOLDEN_WORT, POTION_ALE, POTION_LAGER, POTION_WINE
+    );
+
+    public static final List<RegistryObject<? extends Item>> POTIONS = List.of(
+            POTION_ALE, POTION_LAGER, POTION_WINE
     );
 
     public static final List<RegistryObject<? extends Item>> GRAINS = List.of(

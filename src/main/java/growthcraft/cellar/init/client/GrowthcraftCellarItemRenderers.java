@@ -18,6 +18,10 @@ public class GrowthcraftCellarItemRenderers {
         for(RegistryObject<? extends Item> grain : GrowthcraftCellarItems.GRAINS ) {
             event.getItemColors().register(itemColor, grain::get);
         }
+
+        for(RegistryObject<? extends Item> potion : GrowthcraftCellarItems.POTIONS ) {
+            event.getItemColors().register(itemColor, potion::get);
+        }
     }
 
     private GrowthcraftCellarItemRenderers() {
