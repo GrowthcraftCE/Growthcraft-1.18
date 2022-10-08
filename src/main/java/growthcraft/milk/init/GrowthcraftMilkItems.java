@@ -113,20 +113,28 @@ public class GrowthcraftMilkItems {
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
 
+    // TODO: CHEESE_APPENZELLER_CURDS
+
     public static final RegistryObject<GrowthcraftFoodItem> CHEESE_ASIAGO_SLICE = ITEMS.register(
             CheeseUtils.getCheeseNames(Reference.UnlocalizedName.ASIAGO).get(CheeseUtils.SLICE),
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
+
+    // TODO: CHEESE_ASIAGO_CURDS
 
     public static final RegistryObject<GrowthcraftFoodItem> CHEESE_CASU_MARZU_SLICE = ITEMS.register(
             CheeseUtils.getCheeseNames(Reference.UnlocalizedName.CASU_MARZU).get(CheeseUtils.SLICE),
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
 
+    // TODO: CHEESE_CASU_MARZU_CURDS
+
     public static final RegistryObject<GrowthcraftFoodItem> CHEESE_CHEDDAR_SLICE = ITEMS.register(
             CheeseUtils.getCheeseNames(Reference.UnlocalizedName.CHEDDAR).get(CheeseUtils.SLICE),
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
+
+    // TODO: CHEESE_CHEDDAR_CURDS
 
     public static final RegistryObject<GrowthcraftItem> CHEESE_CLOTH = ITEMS.register(
             Reference.UnlocalizedName.CHEESE_CLOTH, GrowthcraftItem::new
@@ -137,35 +145,49 @@ public class GrowthcraftMilkItems {
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
 
+    // TODO: CHEESE_EMMENTALER_CURDS
+
     public static final RegistryObject<GrowthcraftFoodItem> CHEESE_GORGONZOLA_SLICE = ITEMS.register(
             CheeseUtils.getCheeseNames(Reference.UnlocalizedName.GORGONZOLA).get(CheeseUtils.SLICE),
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
+
+    // TODO: CHEESE_GORGONZOLA_CURDS
 
     public static final RegistryObject<GrowthcraftFoodItem> CHEESE_GOUDA_SLICE = ITEMS.register(
             CheeseUtils.getCheeseNames(Reference.UnlocalizedName.GOUDA).get(CheeseUtils.SLICE),
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
 
+    // TODO: CHEESE_GOUDA_CURDS
+
     public static final RegistryObject<GrowthcraftFoodItem> CHEESE_MONTEREY_SLICE = ITEMS.register(
             CheeseUtils.getCheeseNames(Reference.UnlocalizedName.MONTEREY).get(CheeseUtils.SLICE),
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
+
+    // TODO: CHEESE_MONTEREY_CURDS
 
     public static final RegistryObject<GrowthcraftFoodItem> CHEESE_PARMESAN_SLICE = ITEMS.register(
             CheeseUtils.getCheeseNames(Reference.UnlocalizedName.PARMESAN).get(CheeseUtils.SLICE),
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
 
+    // TODO: CHEESE_PARMESAN_CURDS
+
     public static final RegistryObject<GrowthcraftFoodItem> CHEESE_PROVOLONE_SLICE = ITEMS.register(
             CheeseUtils.getCheeseNames(Reference.UnlocalizedName.PROVOLONE).get(CheeseUtils.SLICE),
             () -> new GrowthcraftFoodItem(2, 0.3F, 64)
     );
 
+    // TODO: CHEESE_PROVOLONE_CURDS
+
     public static final RegistryObject<GrowthcraftFoodItem> CHEESE_RICOTTA_SLICE = ITEMS.register(
             CheeseUtils.getCheeseNames(Reference.UnlocalizedName.RICOTTA).get(CheeseUtils.SLICE),
             () -> new GrowthcraftFoodItem(2, 0.4F, 16)
     );
+
+    // TODO: CHEESE_RICOTTA_CURDS
 
     public static final RegistryObject<GrowthcraftFoodItem> ICE_CREAM_APPLE = ITEMS.register(
             Reference.UnlocalizedName.ICE_CREAM_APPLE, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
@@ -202,6 +224,56 @@ public class GrowthcraftMilkItems {
     public static final RegistryObject<MilkingBucketItem> MILKING_BUCKET_IRON = ITEMS.register(
             Reference.UnlocalizedName.MILKING_BUCKET_IRON,
             MilkingBucketItem::new
+    );
+
+    public static final RegistryObject<GrowthcraftItem> STARTER_CULTURE = ITEMS.register(
+            Reference.UnlocalizedName.STARTER_CULTURE, GrowthcraftItem::new
+    );
+
+    public static final RegistryObject<GrowthcraftItem> STOMACH = ITEMS.register(
+            Reference.UnlocalizedName.STOMACH, GrowthcraftItem::new
+    );
+
+    public static final RegistryObject<GrowthcraftItem> THISTLE = ITEMS.register(
+            Reference.UnlocalizedName.THISTLE, GrowthcraftItem::new
+    );
+
+    // TODO: THISTLE_SEED
+
+    public static final RegistryObject<GrowthcraftFoodItem> YOGURT_APPLE = ITEMS.register(
+            Reference.UnlocalizedName.YOGURT_APPLE, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> YOGURT_CHOCOLATE = ITEMS.register(
+            Reference.UnlocalizedName.YOGURT_CHOCOLATE, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> YOGURT_GRAPE_PURPLE = ITEMS.register(
+            Reference.UnlocalizedName.YOGURT_GRAPE_PURPLE, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> YOGURT_GRAPE_RED = ITEMS.register(
+            Reference.UnlocalizedName.YOGURT_GRAPE_RED, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> YOGURT_GRAPE_WHITE = ITEMS.register(
+            Reference.UnlocalizedName.YOGURT_GRAPE_WHITE, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> YOGURT_HONEY = ITEMS.register(
+            Reference.UnlocalizedName.YOGURT_HONEY, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> YOGURT_PLAIN = ITEMS.register(
+            Reference.UnlocalizedName.YOGURT_PLAIN, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> YOGURT_PUMPKIN = ITEMS.register(
+            Reference.UnlocalizedName.YOGURT_PUMPKIN, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
+    );
+
+    public static final RegistryObject<GrowthcraftFoodItem> YOGURT_WATERMELON = ITEMS.register(
+            Reference.UnlocalizedName.YOGURT_WATERMELON, () -> new GrowthcraftFoodItem(2, 0.3F, 8, true)
     );
 
     public static final List<RegistryObject<? extends Item>> BUCKETS = List.of(
