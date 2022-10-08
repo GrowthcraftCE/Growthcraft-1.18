@@ -120,13 +120,24 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
     @Override
     public void load(CompoundTag nbt) {
         super.load(nbt);
+        this.itemStackHandler.deserializeNBT(nbt.getCompound("inventory"));
+        this.TICK_CLOCK = nbt.getInt("CurrentProcessTicks");
+
         if (nbt.contains("CustomName", 8)) {
             this.customName = Component.Serializer.fromJson(nbt.getString("CustomName"));
         }
-        this.itemStackHandler.deserializeNBT(nbt.getCompound("inventory"));
-        this.TICK_CLOCK = nbt.getInt("CurrentProcessTicks");
     }
 
+    @Override
+    protected void saveAdditional(CompoundTag nbt) {
+        super.saveAdditional(nbt);
+        nbt.put("inventory", this.itemStackHandler.serializeNBT());
+        nbt.putInt("CurrentProcessTicks", this.TICK_CLOCK);
+
+        if (this.customName != null) {
+            nbt.putString("CustomName", Component.Serializer.toJson(this.customName));
+        }
+    }
     @Override
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
         this.load(pkt.getTag());
@@ -144,19 +155,7 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
         itemHandlerLazyOptional.invalidate();
     }
 
-    @Override
-    protected void saveAdditional(CompoundTag nbt) {
-        super.saveAdditional(nbt);
 
-        nbt.put("inventory", this.itemStackHandler.serializeNBT());
-
-        if (this.customName != null) {
-            nbt.putString("CustomName", Component.Serializer.toJson(this.customName));
-        }
-
-        nbt.putInt("CurrentProcessTicks", this.TICK_CLOCK);
-
-    }
 
     private void tryReplicateFlower(BlockPos pos) {
         // TODO: tryReplicateFlower
