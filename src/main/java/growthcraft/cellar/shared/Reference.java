@@ -134,9 +134,9 @@ public class Reference {
     }
 
     public static class GrainColor {
-        public static final ColorUtils.GrowthcraftColor GRAIN = new ColorUtils.GrowthcraftColor(0x595903);
-        public static final ColorUtils.GrowthcraftColor GRAIN_AMBER = new ColorUtils.GrowthcraftColor(0xFFbba04e);
-        public static final ColorUtils.GrowthcraftColor GRAIN_BROWN = new ColorUtils.GrowthcraftColor(0xFF3f2f15);
+        public static final ColorUtils.GrowthcraftColor GRAIN = new ColorUtils.GrowthcraftColor(0xFF595903);
+        public static final ColorUtils.GrowthcraftColor GRAIN_AMBER = new ColorUtils.GrowthcraftColor(0xFFBBA04E);
+        public static final ColorUtils.GrowthcraftColor GRAIN_BROWN = new ColorUtils.GrowthcraftColor(0xFF3F2F15);
         public static final ColorUtils.GrowthcraftColor GRAIN_COPPER = new ColorUtils.GrowthcraftColor(0xFF7c6430);
         public static final ColorUtils.GrowthcraftColor GRAIN_DARK = new ColorUtils.GrowthcraftColor(0xFF241802);
         public static final ColorUtils.GrowthcraftColor GRAIN_DEEP_AMBER = new ColorUtils.GrowthcraftColor(0xFF9b813e);

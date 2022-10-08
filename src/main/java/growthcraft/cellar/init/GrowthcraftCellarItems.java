@@ -274,6 +274,30 @@ public class GrowthcraftCellarItems {
             Reference.UnlocalizedName.GRAIN_BROWN, () -> new GrowthcraftItem(64, Reference.GrainColor.GRAIN_BROWN.getColor())
     );
 
+    public static final RegistryObject<GrowthcraftItem> GRAIN_COPPER = ITEMS.register(
+            Reference.UnlocalizedName.GRAIN_COPPER, () -> new GrowthcraftItem(64, Reference.GrainColor.GRAIN_COPPER.getColor())
+    );
+
+    public static final RegistryObject<GrowthcraftItem> GRAIN_DARK = ITEMS.register(
+            Reference.UnlocalizedName.GRAIN_DARK, () -> new GrowthcraftItem(64, Reference.GrainColor.GRAIN_DARK.getColor())
+    );
+
+    public static final RegistryObject<GrowthcraftItem> GRAIN_DEEP_AMBER = ITEMS.register(
+            Reference.UnlocalizedName.GRAIN_DEEP_AMBER, () -> new GrowthcraftItem(64, Reference.GrainColor.GRAIN_DEEP_AMBER.getColor())
+    );
+
+    public static final RegistryObject<GrowthcraftItem> GRAIN_DEEP_COPPER = ITEMS.register(
+            Reference.UnlocalizedName.GRAIN_DEEP_COPPER, () -> new GrowthcraftItem(64, Reference.GrainColor.GRAIN_DEEP_COPPER.getColor())
+    );
+
+    public static final RegistryObject<GrowthcraftItem> GRAIN_GOLDEN = ITEMS.register(
+            Reference.UnlocalizedName.GRAIN_GOLDEN, () -> new GrowthcraftItem(64, Reference.GrainColor.GRAIN_GOLDEN.getColor())
+    );
+
+    public static final RegistryObject<GrowthcraftItem> GRAIN_PALE_GOLDEN = ITEMS.register(
+            Reference.UnlocalizedName.GRAIN_PALE_GOLDEN, () -> new GrowthcraftItem(64, Reference.GrainColor.GRAIN_PALE_GOLDEN.getColor())
+    );
+
     public static final RegistryObject<GrowthcraftFoodItem> GRAPE_PURPLE = ITEMS.register(
             Reference.UnlocalizedName.GRAPE_PURPLE, GrowthcraftFoodItem::new
     );
@@ -344,7 +368,8 @@ public class GrowthcraftCellarItems {
     );
 
     public static final List<RegistryObject<? extends Item>> GRAINS = List.of(
-            GRAIN_AMBER, GRAIN_BROWN
+            GRAIN_AMBER, GRAIN_BROWN, GRAIN_COPPER, GRAIN_DARK, GRAIN_DEEP_AMBER,
+            GRAIN_DEEP_COPPER, GRAIN_GOLDEN, GRAIN_PALE_GOLDEN
     );
 
     public static void registerCompostables() {

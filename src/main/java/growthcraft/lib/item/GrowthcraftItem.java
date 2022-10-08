@@ -39,6 +39,6 @@ public class GrowthcraftItem extends Item implements ItemColor {
     }
 
     public int getColor(int layer) {
-        return layer == 0 ? this.color : 0x0;
+        return layer == 0 ? this.color : 0xFFFFFF;
     }
 }
