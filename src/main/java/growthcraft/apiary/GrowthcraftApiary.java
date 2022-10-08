@@ -1,5 +1,6 @@
 package growthcraft.apiary;
 
+import growthcraft.apiary.init.GrowthcraftApiaryBlockEntities;
 import growthcraft.apiary.init.GrowthcraftApiaryBlocks;
 import growthcraft.apiary.init.GrowthcraftApiaryFluids;
 import growthcraft.apiary.init.GrowthcraftApiaryItems;
@@ -36,7 +37,7 @@ public class GrowthcraftApiary {
         GrowthcraftApiaryBlocks.BLOCKS.register(modEventBus);
         GrowthcraftApiaryItems.ITEMS.register(modEventBus);
         GrowthcraftApiaryFluids.FLUIDS.register(modEventBus);
-        // GrowthcraftApiaryBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        GrowthcraftApiaryBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         // GrowthcraftApiaryContainers.CONTAINERS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -63,7 +64,7 @@ public class GrowthcraftApiary {
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         final IForgeRegistry<Item> itemRegistry = event.getRegistry();
         final Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.CREATIVE_TAB);
-        //GrowthcraftApiaryBlocks.registerBlockItems(itemRegistry, properties);
+        GrowthcraftApiaryBlocks.registerBlockItems(itemRegistry, properties);
     }
 
     @SubscribeEvent

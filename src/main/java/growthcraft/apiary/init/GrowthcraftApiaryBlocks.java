@@ -1,6 +1,8 @@
 package growthcraft.apiary.init;
 
+import growthcraft.apiary.block.BeeBoxBlock;
 import growthcraft.apiary.shared.Reference;
+import growthcraft.lib.utils.FluidUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -18,6 +20,10 @@ public class GrowthcraftApiaryBlocks {
     );
 
     // TODO: Add Vanilla Plank Bee Boxes
+    public static final RegistryObject<BeeBoxBlock> BEE_BOX_OAK = BLOCKS.register(
+            Reference.UnlocalizedName.BEE_BOX_OAK, BeeBoxBlock::new
+    );
+
     public static void registerBlockItems(IForgeRegistry<Item> itemRegistry, Item.Properties properties) {
         BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
             if (block.getRegistryName() != null && !excludeBlockItemRegistry(block.getRegistryName())) {
@@ -30,7 +36,25 @@ public class GrowthcraftApiaryBlocks {
 
     private static boolean excludeBlockItemRegistry(ResourceLocation registryName) {
         ArrayList<String> excludeBlocks = new ArrayList<>();
+        // Exclude Blocks
         //excludeBlocks.add(growthcraft.core.shared.Reference.MODID + ":" + growthcraft.core.shared.Reference.UnlocalizedName.ROPE_LINEN);
+        // Exclude Fluid Blocks
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_BLACK).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_BLUE).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_BROWN).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_CYAN).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_GRAY).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_GREEN).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_LIGHT_BLUE).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_LIGHT_GRAY).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_LIME).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_MAGENTA).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_ORANGE).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_PINK).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_PURPLE).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_RED).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_WHITE).get(FluidUtils.BLOCK));
+        excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WAX_YELLOW).get(FluidUtils.BLOCK));
 
         return excludeBlocks.contains(registryName.toString());
     }

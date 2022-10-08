@@ -1,5 +1,6 @@
 package growthcraft.apiary.block.entity;
 
+import growthcraft.apiary.init.GrowthcraftApiaryBlockEntities;
 import growthcraft.apiary.init.GrowthcraftApiaryItems;
 import growthcraft.apiary.init.GrowthcraftApiaryTags;
 import growthcraft.lib.utils.TickUtils;
@@ -23,7 +24,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -58,8 +58,8 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
 
     private LazyOptional<IItemHandler> itemHandlerLazyOptional = LazyOptional.empty();
 
-    public BeeBoxBlockEntity(BlockEntityType<?> entityType, BlockPos pos, BlockState state) {
-        super(entityType, pos, state);
+    public BeeBoxBlockEntity(BlockPos pos, BlockState state) {
+        super(GrowthcraftApiaryBlockEntities.BEE_BOX_BLOCK_ENTITY.get(), pos, state);
     }
 
     @Override
@@ -72,6 +72,12 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
         // TODO: return new BeeBoxMenu(containerId, inventory, this);
         return null;
+    }
+
+    public void tick() {
+        if (this.getLevel() != null) {
+            this.tick(this.getLevel(), this.getBlockPos(), this.getBlockState(), this);
+        }
     }
 
     @Override
