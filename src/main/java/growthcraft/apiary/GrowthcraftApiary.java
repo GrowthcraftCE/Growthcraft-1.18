@@ -1,10 +1,8 @@
 package growthcraft.apiary;
 
-import growthcraft.apiary.init.GrowthcraftApiaryBlockEntities;
-import growthcraft.apiary.init.GrowthcraftApiaryBlocks;
-import growthcraft.apiary.init.GrowthcraftApiaryFluids;
-import growthcraft.apiary.init.GrowthcraftApiaryItems;
+import growthcraft.apiary.init.*;
 import growthcraft.apiary.init.client.GrowthcraftApiaryItemRenders;
+import growthcraft.apiary.init.config.GrowthcraftApiaryConfig;
 import growthcraft.apiary.shared.Reference;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -32,21 +30,20 @@ public class GrowthcraftApiary {
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
 
-        // GrowthcraftApiaryConfig.loadConfig()
+        GrowthcraftApiaryConfig.loadConfig();
 
         GrowthcraftApiaryBlocks.BLOCKS.register(modEventBus);
         GrowthcraftApiaryItems.ITEMS.register(modEventBus);
         GrowthcraftApiaryFluids.FLUIDS.register(modEventBus);
         GrowthcraftApiaryBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        // GrowthcraftApiaryContainers.CONTAINERS.register(modEventBus);
+        GrowthcraftApiaryMenus.MENUS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {
-        // Do nothing for now ...
-
+        GrowthcraftApiaryMenus.registerMenus();
     }
 
     private void setup(final FMLCommonSetupEvent event) {

@@ -1,9 +1,11 @@
 package growthcraft.apiary.block.entity;
 
+import growthcraft.apiary.GrowthcraftApiary;
 import growthcraft.apiary.init.GrowthcraftApiaryBlockEntities;
 import growthcraft.apiary.init.GrowthcraftApiaryItems;
 import growthcraft.apiary.init.GrowthcraftApiaryTags;
-import growthcraft.lib.utils.TickUtils;
+import growthcraft.apiary.init.config.GrowthcraftApiaryConfig;
+import growthcraft.apiary.screen.BeeBoxMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -13,6 +15,7 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -22,6 +25,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,13 +37,15 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<BeeBoxBlockEntity>, MenuProvider {
 
-    private final int TICK_MIN = TickUtils.toTicks(10, "seconds");
-    private final int TICK_MAX = TickUtils.toTicks(1, "minutes");
-
-    private int TICK_CLOCK = 0;
-    private int TICK_COOLDOWN = 0;
+    private int tickClock = 0;
+    private int tickMax;
 
     private Component customName;
 
@@ -60,18 +66,19 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
 
     public BeeBoxBlockEntity(BlockPos pos, BlockState state) {
         super(GrowthcraftApiaryBlockEntities.BEE_BOX_BLOCK_ENTITY.get(), pos, state);
+        this.tickMax = GrowthcraftApiaryConfig.getBeeBoxMaxProcessingTime();
+
     }
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return new TranslatableComponent("container.growthcraft_apiary.bee_box");
     }
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
-        // TODO: return new BeeBoxMenu(containerId, inventory, this);
-        return null;
+    public AbstractContainerMenu createMenu(int containerId, @NotNull Inventory inventory, @NotNull Player player) {
+        return new BeeBoxMenu(containerId, inventory, this);
     }
 
     public void tick() {
@@ -82,7 +89,79 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
 
     @Override
     public void tick(Level level, BlockPos pos, BlockState blockState, BeeBoxBlockEntity beeBoxBlockEntity) {
-        // TODO: BeeBoxBlockEntity Ticking
+        if(!level.isClientSide && this.itemStackHandler.getStackInSlot(0).getCount() > 0) {
+            SecureRandom random = new SecureRandom();
+
+            if (tickClock >= tickMax) {
+                GrowthcraftApiary.LOGGER.debug("BeeBoxBlockEntity reached max tick.");
+                int workers = this.itemStackHandler.getStackInSlot(0).getCount();
+
+                // Try and increase the bee population.
+                if (workers < 64 && random.nextInt(100) <= GrowthcraftApiaryConfig.getChanceToIncreaseBees()) {
+                    this.itemStackHandler.getStackInSlot(0).grow(1);
+                }
+
+                // For each worker bee try to do a task
+                for (int i = 0; i < workers; i++) {
+                    int jobID = random.nextInt(4);
+
+                    switch (jobID) {
+                        case 0:
+                            // Do Nothing
+                            GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity Worker #%d doing nothing.", i));
+
+                            break;
+                        case 1:
+                            // Check for comb conversion
+                            GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity Worker #%d checking for comb conversion.", i));
+
+                            int slotNeedsCombConversion = getSlotWithVanillaHoneyComb();
+
+                            if (slotNeedsCombConversion < 0) {
+                                slotNeedsCombConversion = getSlotWithEmptyHoneyComb();
+                            }
+
+                            // Try and fill an empty honey comb.
+                            if (slotNeedsCombConversion > 0) {
+                                this.itemStackHandler.setStackInSlot(
+                                    slotNeedsCombConversion,
+                                    new ItemStack(GrowthcraftApiaryItems.HONEY_COMB_FULL.get())
+                                );
+                            }
+                            break;
+                        case 2:
+                            // Try and duplicate any FlowerBlock
+                            GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity Worker #%d try and duplicate surrounding flower.", i));
+
+                            if (GrowthcraftApiaryConfig.shouldReplicateFlowers()) {
+                                // search the surrounding area for FlowerBlock.
+                                tryReplicateFlower(level, pos);
+                            }
+                            break;
+                        default:
+                            // Add new empty honey comb.
+                            GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity Worker #%d add a new empty honey comb.", i));
+
+                            int emptySlotID = getEmptySlot();
+                            if (emptySlotID > 0) {
+                                this.itemStackHandler.setStackInSlot(
+                                    emptySlotID,
+                                    new ItemStack(GrowthcraftApiaryItems.HONEY_COMB_EMPTY.get())
+                                );
+                            }
+
+                    }
+                }
+
+                this.tickClock = 0;
+            } else {
+                if(tickClock % 120 == 0) {
+                    GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity checking %d / %d", tickClock, tickMax));
+                }
+
+                this.tickClock++;
+            }
+        }
     }
 
     private int getSlotWithVanillaHoneyComb() {
@@ -114,7 +193,7 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
+    public @NotNull CompoundTag getUpdateTag() {
         return this.serializeNBT();
     }
 
@@ -124,10 +203,10 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
     }
 
     @Override
-    public void load(CompoundTag nbt) {
+    public void load(@NotNull CompoundTag nbt) {
         super.load(nbt);
         this.itemStackHandler.deserializeNBT(nbt.getCompound("inventory"));
-        this.TICK_CLOCK = nbt.getInt("CurrentProcessTicks");
+        this.tickClock = nbt.getInt("CurrentProcessTicks");
 
         if (nbt.contains("CustomName", 8)) {
             this.customName = Component.Serializer.fromJson(nbt.getString("CustomName"));
@@ -135,10 +214,11 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     protected void saveAdditional(CompoundTag nbt) {
         super.saveAdditional(nbt);
         nbt.put("inventory", this.itemStackHandler.serializeNBT());
-        nbt.putInt("CurrentProcessTicks", this.TICK_CLOCK);
+        nbt.putInt("CurrentProcessTicks", this.tickClock);
 
         if (this.customName != null) {
             nbt.putString("CustomName", Component.Serializer.toJson(this.customName));
@@ -146,7 +226,7 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
     }
     @Override
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
-        this.load(pkt.getTag());
+        this.load(  pkt.getTag());
     }
 
     @Override
@@ -161,10 +241,38 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
         itemHandlerLazyOptional.invalidate();
     }
 
+    private void tryReplicateFlower(Level level, BlockPos pos) {
+        int beeBoxFlowerRange = GrowthcraftApiaryConfig.getBeeBoxFlowerRange();
 
+        List<BlockState> flowerBlocks = new ArrayList<>();
+        List<BlockPos> airBlocks = new ArrayList<>();
 
-    private void tryReplicateFlower(BlockPos pos) {
-        // TODO: tryReplicateFlower
+        BlockPos lowerBoundPos = pos.below(2).south(beeBoxFlowerRange).west(beeBoxFlowerRange);
+        BlockPos upperBoundPos = pos.above(2).north(beeBoxFlowerRange).east(beeBoxFlowerRange);
+
+        for(BlockPos blockpos : BlockPos.betweenClosed(lowerBoundPos, upperBoundPos)) {
+            BlockPos surroundingPos = blockpos.immutable();
+
+            if (level.getBlockState(surroundingPos).is(BlockTags.FLOWERS)) {
+                flowerBlocks.add(level.getBlockState(surroundingPos));
+            } else if (level.getBlockState(surroundingPos).isAir() && level.getBlockState(surroundingPos.below()).is(BlockTags.DIRT)) {
+                airBlocks.add(surroundingPos);
+            } else {
+                // Do nothing
+            }
+
+        }
+
+        SecureRandom random = new SecureRandom();
+        int rand = random.nextInt(100);
+
+        if(!flowerBlocks.isEmpty() && !airBlocks.isEmpty() && rand <= GrowthcraftApiaryConfig.getChanceToReplicateFlowers()) {
+            int randomFlower = level.getRandom().nextInt(flowerBlocks.size());
+            int randomAirBlock = level.getRandom().nextInt(airBlocks.size());
+
+            level.setBlock(airBlocks.get(randomAirBlock), flowerBlocks.get(randomFlower), Block.UPDATE_ALL_IMMEDIATE);
+        }
+
     }
 
     @NotNull
