@@ -45,15 +45,18 @@ public class AppleTreeLeaves extends LeavesBlock {
         BlockPos posLowerBound = pos.below(1).south(APPLE_CHECK_AREA).west(APPLE_CHECK_AREA);
         BlockPos posUpperBound = pos.below(1).north(APPLE_CHECK_AREA).east(APPLE_CHECK_AREA);
         int applesInArea = 0;
+
         List<BlockPos> validGrowthPos = new ArrayList<>();
 
         for (BlockPos p : BlockPos.betweenClosed(posLowerBound, posUpperBound)) {
-            if (level.getBlockState(p).getBlock() == GrowthcraftApplesBlocks.APPLE_TREE_FRUIT.get()) {
+            BlockPos surroundingPos = p.immutable();
+            if (level.getBlockState(surroundingPos).getBlock() == GrowthcraftApplesBlocks.APPLE_TREE_FRUIT.get()) {
                 applesInArea++;
-            } else if (level.getBlockState(p).isAir() && level.getBlockState(p.above()).getBlock() == GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get()) {
-                validGrowthPos.add(p);
+            } else if (level.getBlockState(surroundingPos).isAir() && level.getBlockState(surroundingPos.above()).getBlock() == GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get()) {
+                validGrowthPos.add(surroundingPos);
             }
         }
+
         if (applesInArea < MAX_APPLES_IN_AREA && validGrowthPos.size() > 0) {
             BlockPos spawnBlockPos = validGrowthPos.get(random.nextInt(validGrowthPos.size()));
 
