@@ -16,8 +16,15 @@ public class GrowthcraftApiaryBlockEntities {
     public static final RegistryObject<BlockEntityType<BeeBoxBlockEntity>> BEE_BOX_BLOCK_ENTITY = BLOCK_ENTITIES.register(
             Reference.UnlocalizedName.BEE_BOX,
             () -> BlockEntityType.Builder.of(BeeBoxBlockEntity::new,
-                    GrowthcraftApiaryBlocks.BEE_BOX_OAK.get()
-            ).build(null)
+                    GrowthcraftApiaryBlocks.BEE_BOX_ACACIA.get(),
+                    GrowthcraftApiaryBlocks.BEE_BOX_BIRCH.get(),
+                    GrowthcraftApiaryBlocks.BEE_BOX_CRIMSON.get(),
+                    GrowthcraftApiaryBlocks.BEE_BOX_DARK_OAK.get(),
+                    GrowthcraftApiaryBlocks.BEE_BOX_JUNGLE.get(),
+                    GrowthcraftApiaryBlocks.BEE_BOX_OAK.get(),
+                    GrowthcraftApiaryBlocks.BEE_BOX_SPRUCE.get(),
+                    GrowthcraftApiaryBlocks.BEE_BOX_WARPED.get()
+                    ).build(null)
     );
 
     private GrowthcraftApiaryBlockEntities() {

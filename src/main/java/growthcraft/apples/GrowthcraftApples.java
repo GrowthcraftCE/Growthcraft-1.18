@@ -1,5 +1,6 @@
 package growthcraft.apples;
 
+import growthcraft.apples.init.GrowthcraftApplesBlockEntities;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesFluids;
 import growthcraft.apples.init.GrowthcraftApplesItems;
@@ -37,6 +38,7 @@ public class GrowthcraftApples {
         GrowthcraftApplesBlocks.BLOCKS.register(modEventBus);
         GrowthcraftApplesItems.ITEMS.register(modEventBus);
         GrowthcraftApplesFluids.FLUIDS.register(modEventBus);
+        GrowthcraftApplesBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

@@ -28,6 +28,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -65,9 +66,12 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
     private LazyOptional<IItemHandler> itemHandlerLazyOptional = LazyOptional.empty();
 
     public BeeBoxBlockEntity(BlockPos pos, BlockState state) {
-        super(GrowthcraftApiaryBlockEntities.BEE_BOX_BLOCK_ENTITY.get(), pos, state);
-        this.tickMax = GrowthcraftApiaryConfig.getBeeBoxMaxProcessingTime();
+        this(GrowthcraftApiaryBlockEntities.BEE_BOX_BLOCK_ENTITY.get(), pos, state, GrowthcraftApiaryConfig.getBeeBoxMaxProcessingTime());
+    }
 
+    public BeeBoxBlockEntity(BlockEntityType<?> blockEntityType,  BlockPos pos, BlockState state, int tickMax) {
+        super(blockEntityType, pos, state);
+        this.tickMax = tickMax;
     }
 
     @Override
@@ -108,13 +112,9 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
                     switch (jobID) {
                         case 0:
                             // Do Nothing
-                            GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity Worker #%d doing nothing.", i));
-
                             break;
                         case 1:
                             // Check for comb conversion
-                            GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity Worker #%d checking for comb conversion.", i));
-
                             int slotNeedsCombConversion = getSlotWithVanillaHoneyComb();
 
                             if (slotNeedsCombConversion < 0) {
@@ -131,8 +131,6 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
                             break;
                         case 2:
                             // Try and duplicate any FlowerBlock
-                            GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity Worker #%d try and duplicate surrounding flower.", i));
-
                             if (GrowthcraftApiaryConfig.shouldReplicateFlowers()) {
                                 // search the surrounding area for FlowerBlock.
                                 tryReplicateFlower(level, pos);
@@ -140,8 +138,6 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
                             break;
                         default:
                             // Add new empty honey comb.
-                            GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity Worker #%d add a new empty honey comb.", i));
-
                             int emptySlotID = getEmptySlot();
                             if (emptySlotID > 0) {
                                 this.itemStackHandler.setStackInSlot(
@@ -155,10 +151,6 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
 
                 this.tickClock = 0;
             } else {
-                if(tickClock % 120 == 0) {
-                    GrowthcraftApiary.LOGGER.debug(String.format("BeeBoxBlockEntity checking %d / %d", tickClock, tickMax));
-                }
-
                 this.tickClock++;
             }
         }

@@ -1,12 +1,12 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "block/oak_log",
-		"1": "block/oak_log_top",
-		"2": "block/oak_planks",
-		"3": "block/oak_trapdoor",
+		"0": "growthcraft_apples:block/apple_wood_log",
+		"1": "growthcraft_apples:block/apple_wood_log_top",
+		"2": "growthcraft_apples:block/apple_plank",
+		"3": "growthcraft_apples:block/apple_plank_trapdoor",
 		"missing": "growthcraft:block/missing",
-		"particle": "block/oak_log"
+		"particle": "growthcraft_apples:block/apple_wood_log"
 	},
 	"elements": [
 		{

@@ -1,12 +1,12 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "block/oak_log",
-		"1": "block/oak_log_top",
-		"2": "block/oak_planks",
-		"3": "block/oak_trapdoor",
+		"0": "block/birch_log",
+		"1": "block/birch_log_top",
+		"2": "block/birch_planks",
+		"3": "block/birch_trapdoor",
 		"missing": "growthcraft:block/missing",
-		"particle": "block/oak_log"
+		"particle": "block/birch_log"
 	},
 	"elements": [
 		{
@@ -269,7 +269,7 @@
 			"rotation": [0, -135, 0],
 			"scale": [0.4, 0.4, 0.4]
 		},
-		"ground": {
+		"ground": {  
 			"rotation": [0, 180, 0],
 			"translation": [0, 3, 0],
 			"scale": [0.25, 0.25, 0.25]

@@ -96,8 +96,9 @@ public class BeeBoxBlock extends BaseEntityBlock {
         return createTickerHelper(
                 blockEntityType,
                 GrowthcraftApiaryBlockEntities.BEE_BOX_BLOCK_ENTITY.get(),
-                (worldLevel, pos, blockState, blockEntity) -> ((BeeBoxBlockEntity) blockEntity).tick()
-        );    }
+                (worldLevel, pos, blockState, blockEntity) -> (blockEntity).tick()
+        );
+    }
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
@@ -106,7 +107,7 @@ public class BeeBoxBlock extends BaseEntityBlock {
                 BeeBoxBlockEntity blockEntity = (BeeBoxBlockEntity) level.getBlockEntity(pos);
                 blockEntity.dropItems();
             } catch (Exception ex) {
-                GrowthcraftApiary.LOGGER.error(String.format("Invalid blockEntity type at %s, expected FishtrapBlockEntity", pos.toString()));
+                GrowthcraftApiary.LOGGER.error(String.format("Invalid blockEntity type at %s, expected BeeBoxBlockEntity", pos.toString()));
             }
         }
         super.onRemove(state, level, pos, newState, isMoving);

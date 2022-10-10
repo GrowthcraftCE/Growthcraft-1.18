@@ -20,10 +20,35 @@ public class GrowthcraftApiaryBlocks {
     );
 
     // TODO: Add Vanilla Plank Bee Boxes
+    public static final RegistryObject<BeeBoxBlock> BEE_BOX_ACACIA = BLOCKS.register(
+            Reference.UnlocalizedName.BEE_BOX_ACACIA, BeeBoxBlock::new
+    );
+
+    public static final RegistryObject<BeeBoxBlock> BEE_BOX_BIRCH = BLOCKS.register(
+            Reference.UnlocalizedName.BEE_BOX_BIRCH, BeeBoxBlock::new
+    );
+
+    public static final RegistryObject<BeeBoxBlock> BEE_BOX_CRIMSON = BLOCKS.register(
+            Reference.UnlocalizedName.BEE_BOX_CRIMSON, BeeBoxBlock::new
+    );
+
+    public static final RegistryObject<BeeBoxBlock> BEE_BOX_DARK_OAK = BLOCKS.register(
+            Reference.UnlocalizedName.BEE_BOX_DARK_OAK, BeeBoxBlock::new
+    );
+
+    public static final RegistryObject<BeeBoxBlock> BEE_BOX_JUNGLE = BLOCKS.register(
+            Reference.UnlocalizedName.BEE_BOX_JUNGLE, BeeBoxBlock::new
+    );
     public static final RegistryObject<BeeBoxBlock> BEE_BOX_OAK = BLOCKS.register(
             Reference.UnlocalizedName.BEE_BOX_OAK, BeeBoxBlock::new
     );
 
+    public static final RegistryObject<BeeBoxBlock> BEE_BOX_SPRUCE = BLOCKS.register(
+            Reference.UnlocalizedName.BEE_BOX_SPRUCE, BeeBoxBlock::new
+    );
+    public static final RegistryObject<BeeBoxBlock> BEE_BOX_WARPED = BLOCKS.register(
+            Reference.UnlocalizedName.BEE_BOX_WARPED, BeeBoxBlock::new
+    );
     public static void registerBlockItems(IForgeRegistry<Item> itemRegistry, Item.Properties properties) {
         BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
             if (block.getRegistryName() != null && !excludeBlockItemRegistry(block.getRegistryName())) {
