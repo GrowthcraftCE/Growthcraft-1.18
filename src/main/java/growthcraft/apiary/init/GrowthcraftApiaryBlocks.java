@@ -19,7 +19,6 @@ public class GrowthcraftApiaryBlocks {
             ForgeRegistries.BLOCKS, Reference.MODID
     );
 
-    // TODO: Add Vanilla Plank Bee Boxes
     public static final RegistryObject<BeeBoxBlock> BEE_BOX_ACACIA = BLOCKS.register(
             Reference.UnlocalizedName.BEE_BOX_ACACIA, BeeBoxBlock::new
     );
