@@ -1,7 +1,5 @@
-package growthcraft.apples.block;
+package growthcraft.lib.block;
 
-import growthcraft.apples.init.GrowthcraftApplesBlocks;
-import growthcraft.apples.init.GrowthcraftApplesItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -11,10 +9,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Ravager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -22,8 +20,8 @@ import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
@@ -33,32 +31,65 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public class AppleTreeFruit extends BushBlock implements BonemealableBlock {
-    public static final int MAX_AGE = 7;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
+import static net.minecraft.world.level.block.state.properties.BlockStateProperties.MOISTURE;
 
-    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
-            Block.box(6.0D, 10.0D, 6.0D, 10.0D, 14.0D, 10.0D),
-            Block.box(6.0D, 10.0D, 6.0D, 10.0D, 14.0D, 10.0D),
-            Block.box(6.0D, 10.0D, 6.0D, 10.0D, 14.0D, 10.0D),
-            Block.box(5.0D, 9.0D, 5.0D, 11.0D, 14.0D, 11.0D),
-            Block.box(5.0D, 9.0D, 5.0D, 11.0D, 14.0D, 11.0D),
-            Block.box(5.0D, 9.0D, 5.0D, 11.0D, 14.0D, 11.0D),
-            Block.box(5.0D, 9.0D, 5.0D, 11.0D, 14.0D, 11.0D),
-            Block.box(4.0D, 7.0D, 4.0D, 12.0D, 14.0D, 12.0D)};
+public class GrowthcraftCropsRopeBlock extends BushBlock implements BonemealableBlock {
 
-    public AppleTreeFruit() {
-        super(getInitProperties());
+    public static IntegerProperty AGE = BlockStateProperties.AGE_7;
+    public static final BooleanProperty DOWN = BooleanProperty.create("down");
+    public static final BooleanProperty EAST = BooleanProperty.create("east");
+    public static final BooleanProperty NORTH = BooleanProperty.create("north");
+    public static final BooleanProperty SOUTH = BooleanProperty.create("south");
+    public static final BooleanProperty UP = BooleanProperty.create("up");
+    public static final BooleanProperty WEST = BooleanProperty.create("west");
+
+    public static final VoxelShape KNOT_BOUNDING_BOX = Block.box(7.0D, 7.0D, 7.0D, 9.0D, 9.0D, 9.0D);
+    public static final VoxelShape NORTH_BOUNDING_BOX = Block.box(7.0D, 7.0D, 0.0D, 9.0D, 9.0D, 7.0D);
+    public static final VoxelShape EAST_BOUNDING_BOX = Block.box(9.0D, 7.0D, 7.0D, 16.0D, 9.0D, 9.0D);
+    public static final VoxelShape SOUTH_BOUNDING_BOX = Block.box(7.0D, 7.0D, 9.0D, 9.0D, 9.0D, 16.0D);
+    public static final VoxelShape WEST_BOUNDING_BOX = Block.box(0.0D, 7.0D, 7.0D, 7.0D, 9.0D, 9.0D);
+    public static final VoxelShape UP_BOUNDING_BOX = Block.box(7.0D, 9.0D, 7.0D, 9.0D, 16.0D, 9.0D);
+    public static final VoxelShape DOWN_BOUNDING_BOX = Block.box(7.0D, 0.0D, 7.0D, 9.0D, 7.0D, 9.0D);
+
+    private Item seedsItem;
+
+    public GrowthcraftCropsRopeBlock() {
+        this(getInitProperties());
+    }
+
+    public GrowthcraftCropsRopeBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(NORTH, false)
+                .setValue(EAST, false)
+                .setValue(SOUTH, false)
+                .setValue(WEST, false)
+                .setValue(UP, false)
+                .setValue(DOWN, false)
+                .setValue(AGE, 0)
+        );
+    }
+
+    public static Properties getInitProperties() {
+        Properties properties = Properties.of(Material.PLANT);
+        properties.randomTicks();
+        properties.strength(0.2F, 0.2F);
+        properties.sound(SoundType.CROP);
+        properties.noOcclusion();
+        return properties;
+    }
+
+    public BlockState getStateForAge(int i) {
+        return this.defaultBlockState().setValue(this.getAgeProperty(), Integer.valueOf(i));
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext context) {
-        return SHAPE_BY_AGE[state.getValue(this.getAgeProperty())];
+    public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
+        return super.getShape(p_60555_, p_60556_, p_60557_, p_60558_);
     }
 
-    @Override
-    protected boolean mayPlaceOn(BlockState state, @NotNull BlockGetter blockGetter, @NotNull BlockPos blockPos) {
-        return state.is(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get());
+    public boolean isMaxAge(BlockState blockState) {
+        return blockState.getValue(this.getAgeProperty()) >= this.getMaxAge();
     }
 
     public IntegerProperty getAgeProperty() {
@@ -73,42 +104,8 @@ public class AppleTreeFruit extends BushBlock implements BonemealableBlock {
         return blockState.getValue(this.getAgeProperty());
     }
 
-    public BlockState getStateForAge(int i) {
-        return this.defaultBlockState().setValue(this.getAgeProperty(), Integer.valueOf(i));
-    }
-
-    public boolean isMaxAge(BlockState blockState) {
-        return blockState.getValue(this.getAgeProperty()) >= this.getMaxAge();
-    }
-
-    @Override
-    public boolean canSurvive(@NotNull BlockState state, LevelReader level, BlockPos pos) {
-        return level.getBlockState(pos.above()).is(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get());
-    }
-
-    protected ItemLike getBaseSeedId() {
-        return GrowthcraftApplesItems.APPLE_SEEDS.get();
-    }
-
-    @Override
-    public boolean isRandomlyTicking(@NotNull BlockState blockState) {
-        return !this.isMaxAge(blockState);
-    }
-
-    @Override
-    public void randomTick(@NotNull BlockState blockState, ServerLevel level, @NotNull BlockPos blockPos, @NotNull Random random) {
-        if (!level.isAreaLoaded(blockPos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        if (level.getRawBrightness(blockPos, 0) >= 9) {
-            int i = this.getAge(blockState);
-            if (i < this.getMaxAge()) {
-                float f = getGrowthSpeed(this, level, blockPos);
-                if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, blockPos, blockState, random.nextInt((int)(25.0F / f) + 1) == 0)) {
-                    level.setBlock(blockPos, this.getStateForAge(i + 1), 2);
-                    net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, blockPos, blockState);
-                }
-            }
-        }
-
+    protected int getBonemealAgeIncrease(Level level) {
+        return Mth.nextInt(level.random, 2, 5);
     }
 
     public void growCrops(Level level, BlockPos blockPos, BlockState state) {
@@ -121,9 +118,21 @@ public class AppleTreeFruit extends BushBlock implements BonemealableBlock {
         level.setBlock(blockPos, this.getStateForAge(i), 2);
     }
 
-    protected int getBonemealAgeIncrease(Level level) {
-        return Mth.nextInt(level.random, 2, 5);
+    @Override
+    public boolean isValidBonemealTarget(BlockGetter blockGetter, BlockPos pos, BlockState state, boolean isClientSide) {
+        return !this.isMaxAge(state);
     }
+
+    @Override
+    public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
+        return true;
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
+        this.growCrops(level, pos, state);
+    }
+
 
     protected static float getGrowthSpeed(Block block, BlockGetter blockGetter, BlockPos pos) {
         float f = 1.0F;
@@ -166,6 +175,7 @@ public class AppleTreeFruit extends BushBlock implements BonemealableBlock {
         return f * 2.0F;
     }
 
+
     @Override
     public void entityInside(BlockState blockState, Level level, BlockPos pos, Entity entity) {
         if (entity instanceof Ravager && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(level, entity)) {
@@ -175,42 +185,19 @@ public class AppleTreeFruit extends BushBlock implements BonemealableBlock {
         super.entityInside(blockState, level, pos, entity);
     }
 
-    public ItemStack getCloneItemStack(BlockGetter p_52254_, BlockPos p_52255_, BlockState p_52256_) {
-        return new ItemStack(this.getBaseSeedId());
-    }
-
-    public boolean isValidBonemealTarget(BlockGetter p_52258_, BlockPos p_52259_, BlockState p_52260_, boolean p_52261_) {
-        return !this.isMaxAge(p_52260_);
-    }
-
-    public boolean isBonemealSuccess(Level p_52268_, Random p_52269_, BlockPos p_52270_, BlockState p_52271_) {
-        return true;
-    }
-
-    public void performBonemeal(ServerLevel p_52249_, Random p_52250_, BlockPos p_52251_, BlockState p_52252_) {
-        this.growCrops(p_52249_, p_52251_, p_52252_);
-    }
-
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_52286_) {
-        p_52286_.add(AGE);
-    }
-
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(state.getValue(AGE) == this.getMaxAge()) {
             level.destroyBlock(pos, true);
+            // TODO: Pull loot from loot table.
             ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.APPLE));
             level.addFreshEntity(itemEntity);
         }
         return InteractionResult.PASS;
     }
 
-    private static Properties getInitProperties() {
-        Properties properties = Properties.of(Material.LEAVES);
-        properties.randomTicks();
-        properties.sound(SoundType.CROP);
-        properties.noOcclusion();
-        properties.instabreak();
-        return properties;
+    @Override
+    public boolean canSurvive(@NotNull BlockState state, LevelReader level, BlockPos pos) {
+        return level.getBlockState(pos.below()).hasProperty(MOISTURE) && level.getBlockState(pos.below()).getValue(MOISTURE) > 0;
     }
 }
