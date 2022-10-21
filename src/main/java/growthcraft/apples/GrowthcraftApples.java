@@ -6,6 +6,7 @@ import growthcraft.apples.init.GrowthcraftApplesFluids;
 import growthcraft.apples.init.GrowthcraftApplesItems;
 import growthcraft.apples.init.client.GrowthcraftApplesBlockRenderers;
 import growthcraft.apples.init.client.GrowthcraftApplesItemRenders;
+import growthcraft.apples.init.config.GrowthcraftApplesConfig;
 import growthcraft.apples.shared.Reference;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -33,6 +34,7 @@ public class GrowthcraftApples {
         modEventBus.addListener(this::clientSetupEvent);
 
         // Config
+        GrowthcraftApplesConfig.loadConfig();
 
         // Blocks, Items, Fluids, Block Entities, Containers
         GrowthcraftApplesBlocks.BLOCKS.register(modEventBus);

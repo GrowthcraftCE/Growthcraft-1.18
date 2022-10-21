@@ -1,6 +1,7 @@
 package growthcraft.cellar.init;
 
 import growthcraft.cellar.item.CellarPotionItem;
+import growthcraft.cellar.item.HopsSeedsItem;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftFoodItem;
@@ -321,7 +322,9 @@ public class GrowthcraftCellarItems {
             Reference.UnlocalizedName.HOPS, GrowthcraftFoodItem::new
     );
 
-    // TODO: HOPS_SEEDS
+    public static final RegistryObject<HopsSeedsItem> HOPS_SEED = ITEMS.register(
+            Reference.UnlocalizedName.HOPS_SEEDS, HopsSeedsItem::new
+    );
 
     public static final RegistryObject<CellarPotionItem> POTION_ALE = ITEMS.register(
             Reference.UnlocalizedName.POTION_ALE, CellarPotionItem::new

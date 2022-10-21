@@ -5,6 +5,7 @@ import growthcraft.milk.init.GrowthcraftMilkFluids;
 import growthcraft.milk.init.GrowthcraftMilkItems;
 import growthcraft.milk.init.client.GrowthcraftMilkBlockRenderers;
 import growthcraft.milk.init.client.GrowthcraftMilkItemRenderers;
+import growthcraft.milk.init.config.GrowthcraftMilkConfig;
 import growthcraft.milk.shared.Reference;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -33,6 +34,7 @@ public class GrowthcraftMilk {
         modEventBus.addListener(this::clientSetupEvent);
 
         // Config
+        GrowthcraftMilkConfig.loadConfig();
 
         // Blocks, Items, Fluids, Block Entities, Containers
         GrowthcraftMilkBlocks.BLOCKS.register(modEventBus);

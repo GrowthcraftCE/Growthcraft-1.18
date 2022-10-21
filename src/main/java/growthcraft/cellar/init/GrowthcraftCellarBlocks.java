@@ -1,5 +1,6 @@
 package growthcraft.cellar.init;
 
+import growthcraft.cellar.block.HopsCropBlock;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.utils.FluidUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -32,7 +33,9 @@ public class GrowthcraftCellarBlocks {
     // TODO: GRAPE_VINE_CROP
     // TODO: GRAPE_VINE_LEAVES
 
-    // TODO: HOPS_VINE
+    public static final RegistryObject<HopsCropBlock> HOPS_VINE = BLOCKS.register(
+            Reference.UnlocalizedName.HOPS_VINE, HopsCropBlock::new
+    );
 
     // TODO: ROASTER
 

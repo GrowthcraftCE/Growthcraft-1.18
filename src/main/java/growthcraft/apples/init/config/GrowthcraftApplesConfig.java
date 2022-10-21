@@ -1,4 +1,4 @@
-package growthcraft.bamboo.init.config;
+package growthcraft.apples.init.config;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
@@ -7,17 +7,19 @@ import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.io.File;
 
-public class GrowthcraftBambooConfig {
+public class GrowthcraftApplesConfig {
+
     public static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec SERVER;
-    public static final String SERVER_CONFIG = "growthcraft-bamboo-server.toml";
+
+    public static final String SERVER_CONFIG = "growthcraft-apples-server.toml";
 
     static {
         initServerConfig(SERVER_BUILDER);
         SERVER = SERVER_BUILDER.build();
     }
 
-    private GrowthcraftBambooConfig() {
+    private GrowthcraftApplesConfig() {
         /* Prevent generation of public constructor */
     }
 
@@ -36,4 +38,7 @@ public class GrowthcraftBambooConfig {
     public static void initServerConfig(ForgeConfigSpec.Builder specBuilder) {
         // Nothing to config yet
     }
+
+    // TODO: Add config for apple growth range check.
+
 }

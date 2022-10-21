@@ -5,6 +5,7 @@ import growthcraft.cellar.init.GrowthcraftCellarFluids;
 import growthcraft.cellar.init.GrowthcraftCellarItems;
 import growthcraft.cellar.init.client.GrowthcraftCellarBlockRenderers;
 import growthcraft.cellar.init.client.GrowthcraftCellarItemRenderers;
+import growthcraft.cellar.init.config.GrowthcraftCellarConfig;
 import growthcraft.cellar.shared.Reference;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -33,6 +34,7 @@ public class GrowthcraftCellar {
         modEventBus.addListener(this::clientSetupEvent);
 
         // Config
+        GrowthcraftCellarConfig.loadConfig();
 
         // Blocks, Items, Fluids, Block Entities, Containers
         GrowthcraftCellarBlocks.BLOCKS.register(modEventBus);

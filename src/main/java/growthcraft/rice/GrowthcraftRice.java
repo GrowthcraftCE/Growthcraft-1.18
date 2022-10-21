@@ -5,6 +5,7 @@ import growthcraft.rice.init.GrowthcraftRiceFluids;
 import growthcraft.rice.init.GrowthcraftRiceItems;
 import growthcraft.rice.init.client.GrowthcraftRiceBlockRenderers;
 import growthcraft.rice.init.client.GrowthcraftRiceItemRenderers;
+import growthcraft.rice.init.config.GrowthcraftRiceConfig;
 import growthcraft.rice.shared.Reference;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -32,6 +33,7 @@ public class GrowthcraftRice {
         modEventBus.addListener(this::clientSetupEvent);
 
         // Config
+        GrowthcraftRiceConfig.loadConfig();
 
         // Blocks, Items, Fluids, Block Entities, Containers
         GrowthcraftRiceBlocks.BLOCKS.register(modEventBus);
