@@ -13,6 +13,10 @@
     "growthcraft:rope_linen_warped_fence",
     "growthcraft_cellar:hops_vine",
     "growthcraft_cellar:red_grape_vine",
-    "growthcraft_cellar:red_grape_vine_leaves"
+    "growthcraft_cellar:red_grape_vine_leaves",
+    "growthcraft_cellar:purple_grape_vine",
+    "growthcraft_cellar:purple_grape_vine_leaves",
+    "growthcraft_cellar:white_grape_vine",
+    "growthcraft_cellar:white_grape_vine_leaves"
   ]
 }

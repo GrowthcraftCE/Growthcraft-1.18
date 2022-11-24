@@ -51,7 +51,11 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            args = [ '-Xmx2g' ]
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
+            args = ['-Xmx2g']
+
             mods {
                 growthcraft_trapper {
                     source sourceSets.main
@@ -63,6 +67,8 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 growthcraft_trapper {
@@ -75,6 +81,8 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             args '--mod', 'growthcraft_trapper', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
@@ -94,12 +102,8 @@ minecraft {
  * ForgeGradle automatically adds the Forge maven and Maven Central for you
  */
 repositories {
-    // JEI, Tinker's Construct, Mantle, Iron Chests, Natura, etc.
-    maven { url = "https://dvs1.progwml6.com/files/maven" }
-    // The One Probe
-    maven { url = "https://maven.tterrag.com/" }
-    // Patchouli
-    maven { url = 'https://maven.blamejared.com' }
+    // Curse Forge
+    maven { url "https://www.cursemaven.com" }
 }
 
 /**
@@ -116,18 +120,9 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
 
-    /** Compile time Dependencies
-     * Include mods that we have a direct dependency with.
-     */
-    //compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-
-    /** Runtime Dependencies
-     *  Include mods the we need while testing during runtime. When adding mods
-     *  to this list, place the version into the gradle.properties file.
-     */
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
-    //runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${minecraft_version_short}:${minecraft_version_short}-${theoneprobe_version}")
-    //runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+    runtimeOnly fg.deobf("curse.maven:jei-${curseforge_jei}")
+    runtimeOnly fg.deobf("curse.maven:theoneprobe-${curseforge_theoneprobe}")
+    runtimeOnly fg.deobf("curse.maven:patchouli-${curseforge_patchouli}")
 }
 
 jar {

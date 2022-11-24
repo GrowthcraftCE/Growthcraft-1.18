@@ -73,6 +73,9 @@ public class Reference {
         public static final String POTION_LAGER = "potion_lager";
         public static final String POTION_WINE = "potion_wine";
         public static final String PURPLE_GRAPE_JUICE = "purple_grape_juice";
+        public static final String PURPLE_GRAPE_VINE = "purple_grape_vine";
+        public static final String PURPLE_GRAPE_VINE_FRUIT = "purple_grape_vine_crop";
+        public static final String PURPLE_GRAPE_VINE_LEAVES = "purple_grape_vine_leaves";
         public static final String PURPLE_GRAPE_WINE = "purple_wine";
         public static final String RED_GRAPE_JUICE = "red_grape_juice";
         public static final String RED_GRAPE_VINE = "red_grape_vine";
@@ -84,6 +87,9 @@ public class Reference {
         public static final String STOUT_ALE = "stout_ale";
         public static final String VIENNA_LAGER = "vienna_lager";
         public static final String WHITE_GRAPE_JUICE = "white_grape_juice";
+        public static final String WHITE_GRAPE_VINE = "white_grape_vine";
+        public static final String WHITE_GRAPE_VINE_FRUIT = "white_grape_vine_crop";
+        public static final String WHITE_GRAPE_VINE_LEAVES = "white_grape_vine_leaves";
         public static final String WHITE_GRAPE_WINE = "white_wine";
         public static final String WORT = "wort";
         public static final String YEAST_BAYANUS = "yeast_bayanus";

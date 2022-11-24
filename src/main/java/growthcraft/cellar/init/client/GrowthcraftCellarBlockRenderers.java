@@ -10,6 +10,12 @@ public class GrowthcraftCellarBlockRenderers {
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.RED_GRAPE_VINE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.RED_GRAPE_VINE_LEAVES.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.RED_GRAPE_VINE_FRUIT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.PURPLE_GRAPE_VINE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.PURPLE_GRAPE_VINE_LEAVES.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.PURPLE_GRAPE_VINE_FRUIT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.WHITE_GRAPE_VINE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.WHITE_GRAPE_VINE_LEAVES.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.WHITE_GRAPE_VINE_FRUIT.get(), RenderType.cutout());
     }
 
     private GrowthcraftCellarBlockRenderers() {

@@ -47,8 +47,31 @@ public class GrowthcraftCellarBlocks {
             () -> new GrapeVineCropBlock(RED_GRAPE_VINE_LEAVES.get())
     );
 
-    // TODO: GRAPE_VINE_CROP
-    // TODO: GRAPE_VINE_LEAVES
+    public static final RegistryObject<GrapeVineFruitBlock> PURPLE_GRAPE_VINE_FRUIT = BLOCKS.register(
+            Reference.UnlocalizedName.PURPLE_GRAPE_VINE_FRUIT,
+            GrapeVineFruitBlock::new
+    );
+    public static final RegistryObject<GrapeVineLeavesCropBlock> PURPLE_GRAPE_VINE_LEAVES = BLOCKS.register(
+            Reference.UnlocalizedName.PURPLE_GRAPE_VINE_LEAVES,
+            () -> new GrapeVineLeavesCropBlock(PURPLE_GRAPE_VINE_FRUIT.get())
+    );
+    public static final RegistryObject<GrapeVineCropBlock> PURPLE_GRAPE_VINE = BLOCKS.register(
+            Reference.UnlocalizedName.PURPLE_GRAPE_VINE,
+            () -> new GrapeVineCropBlock(PURPLE_GRAPE_VINE_LEAVES.get())
+    );
+
+    public static final RegistryObject<GrapeVineFruitBlock> WHITE_GRAPE_VINE_FRUIT = BLOCKS.register(
+            Reference.UnlocalizedName.WHITE_GRAPE_VINE_FRUIT,
+            GrapeVineFruitBlock::new
+    );
+    public static final RegistryObject<GrapeVineLeavesCropBlock> WHITE_GRAPE_VINE_LEAVES = BLOCKS.register(
+            Reference.UnlocalizedName.WHITE_GRAPE_VINE_LEAVES,
+            () -> new GrapeVineLeavesCropBlock(WHITE_GRAPE_VINE_FRUIT.get())
+    );
+    public static final RegistryObject<GrapeVineCropBlock> WHITE_GRAPE_VINE = BLOCKS.register(
+            Reference.UnlocalizedName.WHITE_GRAPE_VINE,
+            () -> new GrapeVineCropBlock(WHITE_GRAPE_VINE_LEAVES.get())
+    );
 
     public static final RegistryObject<HopsCropBlock> HOPS_VINE = BLOCKS.register(
             Reference.UnlocalizedName.HOPS_VINE, HopsCropBlock::new
@@ -106,6 +129,12 @@ public class GrowthcraftCellarBlocks {
         excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.RED_GRAPE_VINE);
         excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.RED_GRAPE_VINE_FRUIT);
         excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.RED_GRAPE_VINE_LEAVES);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.PURPLE_GRAPE_VINE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.PURPLE_GRAPE_VINE_FRUIT);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.PURPLE_GRAPE_VINE_LEAVES);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.WHITE_GRAPE_VINE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.WHITE_GRAPE_VINE_FRUIT);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.WHITE_GRAPE_VINE_LEAVES);
 
         return excludeBlocks.contains(registryName.toString());
     }

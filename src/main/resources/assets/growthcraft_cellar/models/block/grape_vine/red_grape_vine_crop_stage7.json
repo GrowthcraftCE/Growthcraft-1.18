@@ -2,7 +2,7 @@
   "credit": "Made with Blockbench",
   "ambientocclusion": false,
   "textures": {
-    "0": "growthcraft_cellar:block/grape_vine/grape_vine_crop_stage0",
+    "0": "growthcraft_cellar:block/grape_vine/grape_vine_crop_stage4",
     "2": "growthcraft_cellar:item/grape_red",
     "particle": "growthcraft_cellar:block/grape_vine/grape_vine_leaves",
     "missing": "growthcraft:block/missing"
@@ -143,12 +143,12 @@
     {
       "name": "fruit1",
       "from": [
-        5.29289,
-        10,
+        3.29289,
+        6,
         7.53553
       ],
       "to": [
-        11.29289,
+        13.29289,
         16,
         7.53553
       ],
@@ -221,12 +221,12 @@
     {
       "name": "fruit2",
       "from": [
-        5.29289,
-        10,
+        3.29289,
+        6,
         7.53553
       ],
       "to": [
-        11.29289,
+        13.29289,
         16,
         7.53553
       ],
