@@ -1,6 +1,7 @@
 package growthcraft.cellar.init;
 
 import growthcraft.cellar.item.CellarPotionItem;
+import growthcraft.cellar.item.GrapeSeedsItem;
 import growthcraft.cellar.item.HopsSeedsItem;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.item.GrowthcraftBucketItem;
@@ -311,6 +312,13 @@ public class GrowthcraftCellarItems {
     );
 
     // TODO: GRAPE_RED_SEEDS
+    public static final RegistryObject<GrapeSeedsItem> GRAPE_RED_SEEDS = ITEMS.register(
+            Reference.UnlocalizedName.GRAPE_SEEDS_RED,
+            () -> new GrapeSeedsItem(
+                    GrowthcraftCellarBlocks.RED_GRAPE_VINE.get(),
+                    GrowthcraftCellarBlocks.RED_GRAPE_VINE_LEAVES.get(),
+                    GrowthcraftCellarBlocks.RED_GRAPE_VINE_FRUIT.get())
+    );
 
     public static final RegistryObject<GrowthcraftFoodItem> GRAPE_WHITE = ITEMS.register(
             Reference.UnlocalizedName.GRAPE_WHITE, GrowthcraftFoodItem::new

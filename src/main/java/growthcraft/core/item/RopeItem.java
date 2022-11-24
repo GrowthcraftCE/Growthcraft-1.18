@@ -11,8 +11,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+
+import static growthcraft.core.block.RopeBlock.KNOT;
 
 public class RopeItem extends GrowthcraftBlockItem {
 
@@ -51,7 +54,7 @@ public class RopeItem extends GrowthcraftBlockItem {
                 state = GrowthcraftBlocks.ROPE_LINEN_WARPED_FENCE.get().defaultBlockState();
             }
 
-            level.setBlock(blockPos, state, 11);
+            level.setBlock(blockPos, state.setValue(KNOT, true), Block.UPDATE_ALL);
 
             RopeBlockEntity ropeBlockEntity = (RopeBlockEntity) level.getBlockEntity(blockPos);
             if (ropeBlockEntity != null) {

@@ -1,5 +1,6 @@
 package growthcraft.lib.block;
 
+import growthcraft.cellar.GrowthcraftCellar;
 import growthcraft.core.block.entity.RopeBlockEntity;
 import growthcraft.core.init.GrowthcraftTags;
 import growthcraft.lib.utils.BlockStateUtils;
@@ -10,12 +11,9 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Ravager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -43,8 +41,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.Random;
-
-import static net.minecraft.world.level.block.state.properties.BlockStateProperties.MOISTURE;
 
 public class GrowthcraftCropsRopeBlock extends BushBlock implements BonemealableBlock {
 
@@ -94,7 +90,7 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
 
     public BlockState getStateForAge(Level level, BlockPos pos, int i) {
         BlockState currentState = level.getBlockState(pos);
-        return currentState.setValue(this.getAgeProperty(), Integer.valueOf(i));
+        return getActualBlockStateWithAge(level, pos, Integer.valueOf(i));
     }
 
     @Override
@@ -109,14 +105,16 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-        if (!level.isAreaLoaded(pos, 1))
-            return; // Forge: prevent loading unloaded chunks when checking neighbor's light
+        this.tryGrow(state, level, pos, random.nextInt(4));
+    }
+
+    public void tryGrow(BlockState state, ServerLevel level, BlockPos pos, int randomness) {
+        if (!level.isAreaLoaded(pos, 1)) return;
         if (level.getRawBrightness(pos, 0) >= 9) {
             int i = this.getAge(state);
             if (i < this.getMaxAge()) {
-                float f = getGrowthSpeed(this, level, pos);
-                if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
-                    level.setBlock(pos, this.getStateForAge(level, pos, i + 1), 2);
+                if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, randomness == 0)) {
+                    level.setBlock(pos, this.getStateForAge(level, pos, i + 1), Block.UPDATE_ALL);
                     net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
                 }
             }
@@ -136,6 +134,8 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
     }
 
     public BlockState getActualBlockState(BlockGetter level, BlockPos blockPos) {
+        GrowthcraftCellar.LOGGER.warn(String.format("%s [CropsRopeBlock,getActualBlockState]", blockPos.toString()));
+
         return getActualBlockStateWithAge(level, blockPos, level.getBlockState(blockPos).getValue(this.getAgeProperty()));
     }
 
@@ -165,7 +165,7 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
                 .setValue(SOUTH, southBlockState.is(GrowthcraftTags.Blocks.ROPE))
                 .setValue(WEST, westBlockState.is(GrowthcraftTags.Blocks.ROPE))
                 .setValue(UP, upBlockState.is(GrowthcraftTags.Blocks.ROPE))
-                .setValue(DOWN, true);
+                .setValue(DOWN, downBlockState.is(GrowthcraftTags.Blocks.ROPE));
     }
 
     @Override
@@ -216,7 +216,7 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
     }
 
     protected int getBonemealAgeIncrease(Level level) {
-        return Mth.nextInt(level.random, 2, 5);
+        return Mth.nextInt(level.random, 0, 1);
     }
 
     public void growCrops(Level level, BlockPos blockPos, BlockState state) {
@@ -226,7 +226,7 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
             i = j;
         }
 
-        level.setBlock(blockPos, this.getStateForAge(level, blockPos, i), 2);
+        level.setBlock(blockPos, this.getStateForAge(level, blockPos, i), Block.UPDATE_ALL);
     }
 
     @Override
@@ -298,19 +298,12 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if(state.getValue(AGE) == this.getMaxAge()) {
-            level.destroyBlock(pos, true);
-            // TODO: Pull loot from loot table.
-            ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.APPLE));
-            level.addFreshEntity(itemEntity);
-        }
         return InteractionResult.PASS;
     }
 
     @Override
     public boolean canSurvive(@NotNull BlockState state, LevelReader level, BlockPos pos) {
-        return (level.getBlockState(pos.below()).hasProperty(MOISTURE) && level.getBlockState(pos.below()).getValue(MOISTURE) > 0)
-                || level.getBlockState(pos.below()).is(GrowthcraftTags.Blocks.ROPE);
+        return true;
     }
 
     public boolean canBeConnectedTo(BlockState state, BlockGetter world, BlockPos pos, Direction facing) {

@@ -11,6 +11,8 @@
     "growthcraft:rope_linen_oak_fence",
     "growthcraft:rope_linen_spruce_fence",
     "growthcraft:rope_linen_warped_fence",
-    "growthcraft_cellar:hops_vine"
+    "growthcraft_cellar:hops_vine",
+    "growthcraft_cellar:red_grape_vine",
+    "growthcraft_cellar:red_grape_vine_leaves"
   ]
 }

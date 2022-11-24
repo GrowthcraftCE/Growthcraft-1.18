@@ -75,6 +75,9 @@ public class Reference {
         public static final String PURPLE_GRAPE_JUICE = "purple_grape_juice";
         public static final String PURPLE_GRAPE_WINE = "purple_wine";
         public static final String RED_GRAPE_JUICE = "red_grape_juice";
+        public static final String RED_GRAPE_VINE = "red_grape_vine";
+        public static final String RED_GRAPE_VINE_FRUIT = "red_grape_vine_crop";
+        public static final String RED_GRAPE_VINE_LEAVES = "red_grape_vine_leaves";
         public static final String RED_GRAPE_WINE = "red_wine";
         public static final String ROASTER = "roaster";
         public static final String ROASTER_RECIPE = "roaster_recipe";

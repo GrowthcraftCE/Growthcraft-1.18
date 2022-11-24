@@ -1,5 +1,8 @@
 package growthcraft.cellar.init;
 
+import growthcraft.cellar.block.GrapeVineCropBlock;
+import growthcraft.cellar.block.GrapeVineFruitBlock;
+import growthcraft.cellar.block.GrapeVineLeavesCropBlock;
 import growthcraft.cellar.block.HopsCropBlock;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.utils.FluidUtils;
@@ -30,6 +33,20 @@ public class GrowthcraftCellarBlocks {
     // TODO: FRUIT_PRESS_PISTON
 
     // TODO: GRAPE_VINE
+
+    public static final RegistryObject<GrapeVineFruitBlock> RED_GRAPE_VINE_FRUIT = BLOCKS.register(
+            Reference.UnlocalizedName.RED_GRAPE_VINE_FRUIT,
+            GrapeVineFruitBlock::new
+    );
+    public static final RegistryObject<GrapeVineLeavesCropBlock> RED_GRAPE_VINE_LEAVES = BLOCKS.register(
+            Reference.UnlocalizedName.RED_GRAPE_VINE_LEAVES,
+            () -> new GrapeVineLeavesCropBlock(RED_GRAPE_VINE_FRUIT.get())
+    );
+    public static final RegistryObject<GrapeVineCropBlock> RED_GRAPE_VINE = BLOCKS.register(
+            Reference.UnlocalizedName.RED_GRAPE_VINE,
+            () -> new GrapeVineCropBlock(RED_GRAPE_VINE_LEAVES.get())
+    );
+
     // TODO: GRAPE_VINE_CROP
     // TODO: GRAPE_VINE_LEAVES
 
@@ -84,6 +101,11 @@ public class GrowthcraftCellarBlocks {
         excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WHITE_GRAPE_JUICE).get(FluidUtils.BLOCK));
         excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WHITE_GRAPE_WINE).get(FluidUtils.BLOCK));
         excludeBlocks.add(Reference.MODID + ":" + FluidUtils.getFluidNames(Reference.UnlocalizedName.WORT).get(FluidUtils.BLOCK));
+        // Exclude Crop Blocks
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.HOPS_VINE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.RED_GRAPE_VINE);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.RED_GRAPE_VINE_FRUIT);
+        excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.RED_GRAPE_VINE_LEAVES);
 
         return excludeBlocks.contains(registryName.toString());
     }

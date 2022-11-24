@@ -1,6 +1,5 @@
 package growthcraft.apiary.block.entity;
 
-import growthcraft.apiary.GrowthcraftApiary;
 import growthcraft.apiary.init.GrowthcraftApiaryBlockEntities;
 import growthcraft.apiary.init.GrowthcraftApiaryItems;
 import growthcraft.apiary.init.GrowthcraftApiaryTags;
@@ -97,7 +96,6 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
             SecureRandom random = new SecureRandom();
 
             if (tickClock >= tickMax) {
-                GrowthcraftApiary.LOGGER.debug("BeeBoxBlockEntity reached max tick.");
                 int workers = this.itemStackHandler.getStackInSlot(0).getCount();
 
                 // Try and increase the bee population.

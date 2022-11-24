@@ -3,6 +3,7 @@ package growthcraft.cellar.block;
 import growthcraft.cellar.init.GrowthcraftCellarBlocks;
 import growthcraft.cellar.init.GrowthcraftCellarItems;
 import growthcraft.cellar.init.config.GrowthcraftCellarConfig;
+import growthcraft.core.block.RopeBlock;
 import growthcraft.core.init.GrowthcraftTags;
 import growthcraft.lib.block.GrowthcraftCropsRopeBlock;
 import growthcraft.lib.utils.BlockStateUtils;
@@ -85,7 +86,7 @@ public class HopsCropBlock extends GrowthcraftCropsRopeBlock {
         if (state.getValue(AGE) == this.getMaxAge()) {
             ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(GrowthcraftCellarItems.HOPS.get()));
             level.addFreshEntity(itemEntity);
-            level.setBlock(pos, this.getStateForAge(level, pos, 0), Block.UPDATE_CLIENTS);
+            level.setBlock(pos, this.getStateForAge(level, pos, this.getMaxAge() - 1), Block.UPDATE_CLIENTS);
         }
         return InteractionResult.PASS;
     }
@@ -97,6 +98,11 @@ public class HopsCropBlock extends GrowthcraftCropsRopeBlock {
     }
 
     @Override
+    public boolean isValidBonemealTarget(BlockGetter blockGetter, BlockPos pos, BlockState state, boolean isClientSide) {
+        return super.isValidBonemealTarget(blockGetter, pos, state, isClientSide) || blockGetter.getBlockState(pos.above()).getBlock() instanceof RopeBlock;
+    }
+
+    @Override
     public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
         super.performBonemeal(level, random, pos, state);
         this.tryGrowNewHopsVine(level, pos);
@@ -104,11 +110,13 @@ public class HopsCropBlock extends GrowthcraftCropsRopeBlock {
 
     private void tryGrowNewHopsVine(ServerLevel level, BlockPos pos) {
         BlockState blockState = level.getBlockState(pos);
+        BlockState blockStateAbove = level.getBlockState(pos.above());
 
-        if (blockState.getValue(AGE) == this.getMaxAge()
-                && blockState.is(GrowthcraftTags.Blocks.ROPE)
-                && !(blockState.getBlock() instanceof HopsCropBlock)) {
+        if (this.isMaxAge(blockState)
+                && blockStateAbove.is(GrowthcraftTags.Blocks.ROPE)
+                && !(blockStateAbove.getBlock() instanceof HopsCropBlock)) {
             level.setBlock(pos.above(), GrowthcraftCellarBlocks.HOPS_VINE.get().defaultBlockState(), Block.UPDATE_ALL);
         }
     }
+
 }
